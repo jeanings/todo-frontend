@@ -27,7 +27,7 @@ test('sets (mocked, development) state', async() => {
     await waitFor(() => screen.findByRole('list', { name: 'todo tasks container'}));
     expect(screen.getByRole('list', { name: 'todo tasks container' })).toBeInTheDocument();
     expect(store.getState().todo.status).toEqual('successful');
-    expect(store.getState().todo.green).not.toBeNull();
+    // expect(store.getState().todo.green).not.toBeNull();
 });
 
 test('(WIP) renders correct heading text based on <showOnly> state', async() => {
@@ -48,4 +48,37 @@ test('(WIP) renders correct heading text based on <showOnly> state', async() => 
     
     // TODO: 
     // refactor later for selecter integration tests.
+});
+
+test('renders color-coded todo containers from fetched data', async() => {
+    render(
+        <Provider store={store}>
+            <Todo />
+        </Provider>
+    );
+
+    expect(store.getState().todo.status).toEqual('successful');
+    
+    // Verify non-existing colors.
+    const nonExistingColors = ['red', 'green'];
+    for (let color of nonExistingColors) {
+        // Verify existence in state.
+        expect(store.getState().todo[color]).toEqual(null);
+        // Verify container exists in DOM.
+        const colorContainer = screen.queryAllByRole(
+            'listitem', { name: `todo container for ${color} coded tasks`});
+        expect(colorContainer.length).toEqual(0);
+    }
+    
+    // Verify existing colors.
+    const existingColors = ['solid', 'amber', 'transparent'];
+    for (let color of existingColors) {
+        // Verify existence in state.
+        expect(store.getState().todo[color]).not.toEqual(null);
+        // Verify container exists in DOM.
+        const colorContainer = screen.queryAllByRole(
+            'listitem', { name: `todo container for ${color} coded tasks`});
+        expect(colorContainer.length).not.toEqual(0);
+    }
+ 
 });
