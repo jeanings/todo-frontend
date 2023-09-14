@@ -30,7 +30,8 @@ const LegendSelector: React.FunctionComponent = () => {
         const legendButton = (
             <LegendButton 
                 color={ color }
-                label={ labelPairs[color] }   
+                label={ labelPairs[color] }
+                key={`key-legend-button_${color}`}
             />
         );
         legendButtons = [...legendButtons, legendButton];
