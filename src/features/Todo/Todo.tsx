@@ -50,7 +50,7 @@ const Todo: React.FunctionComponent = () => {
 
     return (
         <div className="Todo"
-            role="list"
+            role="main"
             aria-label="todo tasks container">
             
             <h1 className="Todo__greet"
@@ -61,7 +61,12 @@ const Todo: React.FunctionComponent = () => {
             </h1>
         
             {/* Render list of todo item components */}
-            { todoTaskElems }
+            <div className="Todo__tasks"
+                role="list"
+                aria-label="todo tasks list container">
+                { todoTaskElems }
+            </div>
+                
           
         </div>
     );
@@ -93,7 +98,7 @@ const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskPr
     // Build TodoTasks.
     let todoTasks: React.ReactElement<TodoTaskProps>[]= [];
     todoTasks = todosOfColor.map((coloredTodo: TodoType) => {
-        const baseClassName: string = "Todo__task-" + coloredTodo.color;
+        const baseClassName: string = "Todo__tasks-" + coloredTodo.color;
         
         const todoTask: React.ReactElement<TodoTaskProps> = (
             <TodoTask 

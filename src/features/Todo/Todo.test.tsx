@@ -14,7 +14,7 @@ test('renders Todo component', () => {
         </Provider>
     );
 
-    expect(screen.getByRole('list', { name: 'todo tasks container' })).toBeInTheDocument();
+    expect(screen.getByRole('main', { name: 'todo tasks container' })).toBeInTheDocument();
 });
 
 test('sets (mocked, development) state', async() => {
@@ -24,8 +24,8 @@ test('sets (mocked, development) state', async() => {
         </Provider>
     );
 
-    await waitFor(() => screen.findByRole('list', { name: 'todo tasks container'}));
-    expect(screen.getByRole('list', { name: 'todo tasks container' })).toBeInTheDocument();
+    await waitFor(() => screen.findByRole('main', { name: 'todo tasks container'}));
+    expect(screen.getByRole('main', { name: 'todo tasks container' })).toBeInTheDocument();
     expect(store.getState().todo.status).toEqual('successful');
     // expect(store.getState().todo.green).not.toBeNull();
 });
@@ -80,5 +80,4 @@ test('renders color-coded todo containers from fetched data', async() => {
             'listitem', { name: `todo container for ${color} coded tasks`});
         expect(colorContainer.length).not.toEqual(0);
     }
- 
 });
