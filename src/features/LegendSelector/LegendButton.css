@@ -1,0 +1,25 @@
+.Todo__legend__button {
+    display: flex;
+    background: none;
+    border: none;
+    align-items: center;
+    column-gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .Todo__legend__button__indicator.solid {
+        fill: var(--color-solid);
+    }
+
+    .Todo__legend__button__indicator.red {
+        fill: var(--color-red);
+    }
+
+    .Todo__legend__button__indicator.amber {
+        fill: var(--color-amber);
+    }
+
+    .Todo__legend__button__indicator.green {
+        fill: var(--color-green);
+    }
