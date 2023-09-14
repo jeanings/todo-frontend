@@ -1,5 +1,7 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import React from 'react';
+import { useAppSelector } from '../../app/hooks';
+import { TodoProps } from '../Todo/todoSlice';
+import LegendButton, { LegendButtonProps } from './LegendButton';
 import './LegendSelector.css';
 
 /* ===============================================================
@@ -8,7 +10,31 @@ import './LegendSelector.css';
     Uses <todo.showOnly> state. 
 =============================================================== */
 const LegendSelector: React.FunctionComponent = () => {
+    const showOnly: TodoProps['showOnly'] = useAppSelector(state => state.todo.showOnly);
+
+    const colors: LegendButtonProps['color'][] = [
+        'all', 'solid', 'red', 'amber', 'green', 'transparent'
+    ];
+    const labelPairs: LegendLabelsType = {
+        'all': 'All',
+        'solid': 'ASAP',
+        'red': 'Today',
+        'amber': 'Tomorrow',
+        'green': '2~3 days',
+        'transparent': '4 days'
+    };
     
+    // Build list of selector buttons.
+    let legendButtons: React.ReactElement<LegendButtonProps>[] = [];
+    for (let color of colors) {
+        const legendButton = (
+            <LegendButton 
+                color={ color }
+                label={ labelPairs[color] }   
+            />
+        );
+        legendButtons = [...legendButtons, legendButton];
+    }
 
     return (
         <div className="Todo__legend"
@@ -17,8 +43,13 @@ const LegendSelector: React.FunctionComponent = () => {
             aria-label="todo legend and selector">
 
             {/* Selector buttons for filtering todos by 'color' */}
+            { legendButtons }
         </div>
     );
+};
+
+type LegendLabelsType = {
+    [key in TodoProps['showOnly']]: LegendButtonProps['label'];
 };
 
 export default LegendSelector;
