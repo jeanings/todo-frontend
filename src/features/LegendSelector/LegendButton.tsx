@@ -1,19 +1,60 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { TodoProps } from '../Todo/todoSlice';
+import { handleColorSelect, TodoProps } from '../Todo/todoSlice';
 import './LegendButton.css';
 
 /* ===============================================================
     Legend selector button that shows/filters 'color' todos. 
 =============================================================== */
 const LegendButton: React.FunctionComponent<LegendButtonProps> = (props: LegendButtonProps) => {
+    const dispatch = useAppDispatch();
+    const [ legendButtonHovered, setLegendButtonHovered ] = useState(false);
+    const [ legendButtonSelected, setLegendButtonSelected ] = useState(false);
     const showOnly: TodoProps['showOnly'] = useAppSelector(state => state.todo.showOnly);
 
+    // Set clicked state on initial render for 'all'.
+    useEffect(() => {
+        if (props.color === 'all') {
+            setLegendButtonSelected(true);
+        }
+    }, []);
+
+    // Update <showOnly> state on legend button click.
+    useEffect(() => {
+        // Only dispatch action if new selection.
+        if (showOnly !== props.color
+            && legendButtonSelected === true) {
+            dispatch(handleColorSelect(props.color));
+        }        
+    }, [legendButtonSelected]);
+
+    // De-select button if <showOnly> different.
+    useEffect(() => {
+        if (showOnly !== props.color) {
+            setLegendButtonSelected(false);
+        }
+    }, [showOnly]);
+
+    
+    const onLegendButtonHover = (event: React.SyntheticEvent) => {
+        legendButtonHovered === true
+            ? setLegendButtonHovered(false)
+            : setLegendButtonHovered(true);
+    };
+
+    const onLegendButtonClick = (event: React.SyntheticEvent) => {
+        legendButtonSelected === true
+            ? setLegendButtonSelected(false)
+            : setLegendButtonSelected(true);
+    };
 
     return (
-        <button className="Todo__legend__button"
+        <button className={`Todo__legend__button ${props.color} ${legendButtonHovered ? "hovered" : ""} ${legendButtonSelected ? "selected" : ""}`}
             id={ `selector__${props.color}`}
-            aria-label="todo selector button">
+            aria-label="todo selector button"
+            onMouseEnter={ onLegendButtonHover }
+            onMouseLeave={ onLegendButtonHover }
+            onClick={ onLegendButtonClick }>
 
             { getLabelIcon(props.color) }   
             { props.label }
@@ -21,6 +62,7 @@ const LegendButton: React.FunctionComponent<LegendButtonProps> = (props: LegendB
         </button>
     );
 };
+
 
 const getLabelIcon = (color: LegendButtonProps['color']) => {
     const styledClassName: string = `Todo__legend__button__indicator ${color}`;

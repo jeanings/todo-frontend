@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, ActionMatchingAllOf } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
 import { RootState } from '../../app/store';
 import { todoApiUri } from '../../app/App';
@@ -150,8 +150,14 @@ const todosSlice = createSlice({
             // Update statuses.
             state.status = 'successful';
             state.showOnly = 'all';
-        }
+        },
+        // Handles filtering of todos to show by 'color'.
+        handleColorSelect: (state, action) => {
+            const onlyShowFor: TodoProps['showOnly'] = action.payload;
+            state.showOnly = onlyShowFor;
+        },
     },
+   
     extraReducers: (builder) => {
         builder
             // Create thunks.
@@ -207,5 +213,5 @@ export const todoState = (state: RootState) => state.todo;
 
 // Export actions, reducers.
 const { actions, reducer } = todosSlice;
-export const { setTodos } = actions;
+export const { setTodos, handleColorSelect } = actions;
 export default reducer;
