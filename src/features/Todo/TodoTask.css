@@ -70,7 +70,7 @@
             background: var(--color-red);
             color: #000000;
             opacity: 1;
-            border-radius: 8%;
+            border-radius: 10%;
             border: 2px dotted rgba(0, 0, 0, 0);
         }
 
@@ -78,7 +78,7 @@
             background: var(--color-amber);
             color: #000000;
             opacity: 0.90;
-            border-radius: 10%;
+            border-radius: 20%;
             border: 2px dotted rgba(0, 0, 0, 0);
         }
 
@@ -86,7 +86,7 @@
             background: var(--color-green);
             color: #000000;
             opacity: 0.75;
-            border-radius: 12%;
+            border-radius: 35%;
             border: 2px dotted rgba(0, 0, 0, 0);
         }
 
