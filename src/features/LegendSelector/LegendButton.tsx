@@ -25,7 +25,7 @@ const LegendButton: React.FunctionComponent<LegendButtonProps> = (props: LegendB
         if (showOnly !== props.color
             && legendButtonSelected === true) {
             dispatch(handleColorSelect(props.color));
-        }        
+        }
     }, [legendButtonSelected]);
 
     // De-select button if <showOnly> different.
@@ -47,6 +47,7 @@ const LegendButton: React.FunctionComponent<LegendButtonProps> = (props: LegendB
             ? setLegendButtonSelected(false)
             : setLegendButtonSelected(true);
     };
+    
 
     return (
         <button className={`Todo__legend__button ${props.color} ${legendButtonHovered ? "hovered" : ""} ${legendButtonSelected ? "selected" : ""}`}
@@ -108,7 +109,7 @@ const getLabelIcon = (color: LegendButtonProps['color']) => {
 
 export interface LegendButtonProps {
     'color': TodoProps['showOnly'],
-    'label': 'All' | 'ASAP' | 'Today' | 'Tomorrow' | '2~3 days' | '4 days'
+    'label': 'All' | 'ASAP' | 'Today' | 'Tomorrow' | '2~3 days' | '4 days' | '5+ days'
 };
 
 export default LegendButton;

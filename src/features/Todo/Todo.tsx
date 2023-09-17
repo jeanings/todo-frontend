@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { DEV_BACKEND } from '../../app/App';
-import { setTodos, TodoProps, TodoType } from './todoSlice';
+import { 
+    getTodos,
+    setTodos, 
+    TodoProps, 
+    TodoType } from './todoSlice';
 import TodoTask, { TodoTaskProps } from './TodoTask';
 // import todos from '../../utils/mockTodos.json';
 import todos from '../../utils/mockTodos2.json';
@@ -20,12 +24,13 @@ const Todo: React.FunctionComponent = () => {
     // Fetch todos on init render.
     useEffect(() => {
         if (todoState.status === 'uninitialized') {
-            if (DEV_BACKEND === 'Off') {
-                // for development only, mocked action to set state.
-                dispatch(setTodos(todos));
-            }
+            // if (DEV_BACKEND === 'Off') {
+            //     // for development only, mocked action to set state.
+            //     dispatch(setTodos(todos));
+            // }
+            dispatch(getTodos(null));
         }
-    }, [todoState.status]);
+    }, []);
 
 
     // Build list of TodoTask elements.
@@ -85,7 +90,8 @@ export const getGreeting = (showOnly: TodoProps['showOnly']): string => {
         'red': 'for today',
         'amber': 'for tomorrow',
         'green': 'in 2~3 days',
-        'transparent': 'in 4 days'
+        'transparent': 'in 4 days',
+        'blank': '5+ days'
     };
 
     return greetingsForColors[showOnly];
@@ -109,6 +115,7 @@ const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskPr
                 title={ coloredTodo.title }
                 date={ coloredTodo.date }
                 tasks={ coloredTodo.tasks }
+                completed={ coloredTodo.completed }
                 key={ `key-task-${coloredTodo.color}_${coloredTodo.id}` }
             />
         );
