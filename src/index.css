@@ -1,8 +1,8 @@
 :root {
     --color-solid: rgb(0, 0, 0);
-    --color-red: rgba(235, 67, 16, 0.75);
-    --color-amber: rgba(255, 208, 0, 0.75);
-    --color-green: rgba(13, 236, 143, 0.75);
+    --color-red: 235, 67, 16;
+    --color-amber: 255, 208, 0;
+    --color-green: 13, 236, 143;
     --color-transparent: hsl(0, 0%, 100%);
     --root-font-size: 16px;
     overflow: hidden;

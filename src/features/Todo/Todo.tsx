@@ -3,7 +3,8 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { DEV_BACKEND } from '../../app/App';
 import { setTodos, TodoProps, TodoType } from './todoSlice';
 import TodoTask, { TodoTaskProps } from './TodoTask';
-import todos from '../../utils/mockTodos.json';
+// import todos from '../../utils/mockTodos.json';
+import todos from '../../utils/mockTodos2.json';
 import './Todo.css';
 
 

@@ -8,7 +8,7 @@ import App from './App';
 test('renders main App component', () => {
     render(
         <Provider store={store}>
-        <App />
+            <App />
         </Provider>
     );
 });

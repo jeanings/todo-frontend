@@ -1,5 +1,7 @@
 .App {
     display: grid;
+    grid-template-columns: 90% 10%;
+    grid-template-rows: 100%;
     min-width: 100%;
     min-height: 100%;
     justify-items: center;

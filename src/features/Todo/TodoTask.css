@@ -67,7 +67,7 @@
         }
 
         .Todo__tasks-red {
-            background: var(--color-red);
+            background: rgba(var(--color-red), 0.75);
             color: #000000;
             opacity: 1;
             border-radius: 10%;
@@ -75,7 +75,7 @@
         }
 
         .Todo__tasks-amber {
-            background: var(--color-amber);
+            background: rgba(var(--color-amber), 0.75);
             color: #000000;
             opacity: 0.90;
             border-radius: 20%;
@@ -83,7 +83,7 @@
         }
 
         .Todo__tasks-green {
-            background: var(--color-green);
+            background: rgba(var(--color-green), 0.75);
             color: #000000;
             opacity: 0.75;
             border-radius: 35%;
