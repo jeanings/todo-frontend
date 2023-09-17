@@ -113,12 +113,7 @@ export const removeTodo = createAsyncThunk(
 --------------------------------------------- */
 const initialState: TodoProps = {
     status: 'uninitialized',
-    solid: null,            // spot, urgent ASAP tasks
-    red: null,              // daily
-    amber: null,            // tomorrow
-    green: null,            // in 2, 3 days
-    transparent: null,      // in 4 days, not urgent
-    blank: null,            // in 5+ days
+    todos: null,
     showOnly: 'all'
 };
 
@@ -173,32 +168,7 @@ const todosSlice = createSlice({
             .addCase(getTodos.fulfilled, (state, action) => {
                 // Save fetched todos into state.
                 const data = action.payload;
-                const colors: {[index: string]: TodoType[]} = {
-                    solid: [],
-                    red: [],
-                    amber: [],
-                    green: [],
-                    transparent: [],
-                    blank: []
-                };
-
-                // Bin 'colored' todos from response to its corresponding array.
-                for (let todo of data) {
-                    if (Object.keys(colors).includes(todo.color)) {
-                        colors[todo.color].push(todo);
-                    }
-                    else if (todo.color === null) {
-                        colors.blank.push(todo);
-                    }
-                }
-
-                // Update color states.
-                state.solid = colors.solid;
-                state.red = colors.red;
-                state.amber = colors.amber;
-                state.green = colors.green;
-                state.transparent = colors.transparent;
-                state.blank = colors.blank;
+                state.todos = data;
                 // Update statuses.
                 state.status = 'successful';
                 state.showOnly = 'all';
@@ -207,13 +177,13 @@ const todosSlice = createSlice({
                 Update (PATCH) reducer.
             --------------------------- */
             .addCase(updateTodo.fulfilled, (state, action) => {
-
+                const data = action.payload;
             })
             /* ---------------------------
                 Delete (DELETE) reducer.
             --------------------------- */
             .addCase(removeTodo.fulfilled, (state, action) => {
-
+                const data = action.payload;
             })
       }
 });
@@ -221,12 +191,7 @@ const todosSlice = createSlice({
 export interface TodoProps {
     [index: string]: string | null | TodoType[]
     status: 'uninitialized' | 'successful' | 'error',
-    solid: TodoType[] | null,
-    red: TodoType[] | null,
-    amber: TodoType[] | null,
-    green: TodoType[] | null,
-    transparent: TodoType[] | null,
-    blank: TodoType[] | null,
+    todos: TodoType[] | null,
     showOnly: 'all' | 'solid' | 'red' | 'amber' | 'green' | 'transparent' | 'blank'
 };
 
@@ -235,7 +200,7 @@ export interface TodoType {
     title: string,
     date: Date,
     tasks: string[],
-    color?: 'all' | 'solid' | 'red' | 'amber' | 'green' | 'transparent' | 'blank',
+    color?: 'all' | 'grey' | 'solid' | 'red' | 'amber' | 'green' | 'transparent' | 'blank',
     completed: boolean
 };
 

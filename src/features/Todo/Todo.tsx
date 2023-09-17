@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { DEV_BACKEND } from '../../app/App';
 import { 
     getTodos,
-    setTodos, 
     TodoProps, 
     TodoType } from './todoSlice';
 import TodoTask, { TodoTaskProps } from './TodoTask';
-// import todos from '../../utils/mockTodos.json';
-import todos from '../../utils/mockTodos2.json';
 import './Todo.css';
 
 
@@ -19,40 +15,24 @@ import './Todo.css';
 const Todo: React.FunctionComponent = () => {
     const dispatch = useAppDispatch();
     const todoState = useAppSelector(state => state.todo);
+    const todos = todoState.todos;
     const showOnly: TodoProps['showOnly'] = todoState.showOnly;
     
     // Fetch todos on init render.
     useEffect(() => {
         if (todoState.status === 'uninitialized') {
-            // if (DEV_BACKEND === 'Off') {
-            //     // for development only, mocked action to set state.
-            //     dispatch(setTodos(todos));
-            // }
-            dispatch(getTodos(null));
+            dispatch(getTodos({}));
         }
     }, []);
 
 
     // Build list of TodoTask elements.
     let todoTaskElems: React.ReactElement<TodoTaskProps>[] = [];
-    if (todoState.status === 'successful') {
-        const todosToBuild: (TodoType[] | null)[]= [
-            todoState.solid,
-            todoState.red,
-            todoState.amber,
-            todoState.green,
-            todoState.transparent
-        ];
-
-        for (let colorToBuild of todosToBuild) {
-            if (colorToBuild === null) {
-                continue;
-            }
-
-            const todoElemsOfColor = buildTodoTasks(colorToBuild);
-            todoTaskElems = [...todoTaskElems, ...todoElemsOfColor];
-        };
+    if (todoState.status === 'successful' && todos) {
+        const todosToBuild: TodoType[] = findTodosOfColor(todos, showOnly);
+        todoTaskElems = buildTodoTasks(todosToBuild);
     }
+
 
     return (
         <div className="Todo"
@@ -96,6 +76,36 @@ export const getGreeting = (showOnly: TodoProps['showOnly']): string => {
 
     return greetingsForColors[showOnly];
 };
+
+
+
+const findTodosOfColor = (todosOfColor: TodoType[], targetColor: TodoProps['showOnly']): TodoType[] => {
+    let foundTodosOfColor: TodoType[] = [];
+    
+    if (targetColor === 'all') {
+        foundTodosOfColor = todosOfColor.filter((todo: TodoType) => {
+            let result: boolean = false;
+            switch (todo.color) {
+                case 'grey':
+                    break;
+                case 'blank':
+                    break;
+                default:
+                    result = true;
+            }
+            return result;
+        });
+    }
+    else {
+        foundTodosOfColor = todosOfColor.filter((todo: TodoType) => {
+            return todo.color === targetColor;
+        });
+    }
+    
+    return foundTodosOfColor;
+};
+
+
 
 const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskProps>[] => {
     /* ------------------------------------------------------
