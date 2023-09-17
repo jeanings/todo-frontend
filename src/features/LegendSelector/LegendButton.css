@@ -34,7 +34,7 @@
 
     .Todo__legend__button__indicator.solid {
         fill: var(--color-solid);
-        transform: rotate(45deg);
+        transform: scale(1.3);
     }
 
     .Todo__legend__button__indicator.red {

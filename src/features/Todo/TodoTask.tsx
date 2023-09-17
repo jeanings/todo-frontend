@@ -1,6 +1,8 @@
 import React from 'react';
 import { TodoType } from './todoSlice';
+import TodoTaskButton from './TodoTaskButton';
 import './TodoTask.css';
+import { JsxAttribute } from 'typescript';
 
 /* ===============================================================
     Constructor for creating individual todo task items.
@@ -25,14 +27,14 @@ import './TodoTask.css';
             Square dashed borders.
 =============================================================== */
 const TodoTask: React.FunctionComponent<TodoTaskProps> = (props: TodoTaskProps) => {
-    const styledClassname: string = props.baseClassname;
+    const styledClassname: string = `${props.baseClassname}__box`;
 
     // Build list of tasks.
     const taskListElems: JSX.Element[] = [];
     let taskCount: number = 0;
     for (let task of props.tasks) {
         const taskListElem: JSX.Element = (
-            <li className={ styledClassname + "__" + "tasklist-item" }
+            <li className={ `${styledClassname}__tasklist-item ${props.color}` }
                 role="listitem"
                 aria-label="todo task list item"
                 key={`key-task-${props.color}_${props.id}-li-${taskCount}${task}`}>
@@ -43,8 +45,25 @@ const TodoTask: React.FunctionComponent<TodoTaskProps> = (props: TodoTaskProps) 
         taskCount++;
     }
 
+    // Edit and delete buttons.
+    const editButton: JSX.Element = (
+        <TodoTaskButton
+            name='edit'
+            baseClassname={styledClassname}
+            color={props.color}
+        />
+    );
+
+    const deleteButton: JSX.Element = (
+        <TodoTaskButton
+            name='delete'
+            baseClassname={styledClassname}
+            color={props.color}
+        />
+    );
+
     return (
-        <div className={ styledClassname }
+        <div className={ `${styledClassname} ${props.color}` }
             id={ props.id }
             role="listitem"
             aria-label={ `todo container for ${props.color} coded tasks` }>
@@ -54,14 +73,18 @@ const TodoTask: React.FunctionComponent<TodoTaskProps> = (props: TodoTaskProps) 
                     ? props.date.toString() 
                     : '' }
             </h4>
-            <ul className={ styledClassname + "__" + "tasklist" }
+            <ul className={ `${styledClassname}__tasklist ${props.color}` }
                 role="list"
                 aria-label="todo task list container">
                 { taskListElems }
             </ul>
+
+            { editButton }
+            { deleteButton }
         </div>
     );
 };
+
 
 export interface TodoTaskProps extends TodoType {
     'baseClassname': string

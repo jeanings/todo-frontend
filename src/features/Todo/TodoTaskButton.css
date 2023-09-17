@@ -1,0 +1,24 @@
+.Todo__tasks__box__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 250ms all;
+}
+
+    .Todo__tasks__box__button.edit {
+        justify-self: right;
+    }
+
+    .Todo__tasks__box__button.delete {
+        justify-self: left;
+    }
+
+    .Todo__tasks__box__icon {
+        fill: #5a5a5a;
+    }
+
+.Todo__tasks__box__icon:hover {
+    fill: #ffffff;
+    transition: 250ms all;
+}
+

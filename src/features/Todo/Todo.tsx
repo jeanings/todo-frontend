@@ -43,7 +43,7 @@ const Todo: React.FunctionComponent = () => {
                 role="heading"
                 aria-label="todo greeter">
                 {/* Dynamically change greeting based on selected 'color' */}
-                { "ToDos" + " " + getGreeting(showOnly) }
+                { `ToDos ${getGreeting(showOnly)}` }
             </h1>
         
             {/* Render list of todo item components */}
@@ -115,7 +115,7 @@ const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskPr
     // Build TodoTasks.
     let todoTasks: React.ReactElement<TodoTaskProps>[]= [];
     todoTasks = todosOfColor.map((coloredTodo: TodoType) => {
-        const baseClassName: string = "Todo__tasks-" + coloredTodo.color;
+        const baseClassName: string = "Todo__tasks";
         
         const todoTask: React.ReactElement<TodoTaskProps> = (
             <TodoTask 
