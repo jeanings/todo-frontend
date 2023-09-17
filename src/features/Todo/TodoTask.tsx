@@ -26,16 +26,18 @@ const TodoTask: React.FunctionComponent<TodoTaskProps> = (props: TodoTaskProps) 
 
     // Build list of tasks.
     const taskListElems: JSX.Element[] = [];
+    let taskCount: number = 0;
     for (let task of props.tasks) {
         const taskListElem: JSX.Element = (
             <li className={ styledClassname + "__" + "tasklist-item" }
                 role="listitem"
                 aria-label="todo task list item"
-                key={`key-task-${props.color}_${props.id}-li-${task}`}>
+                key={`key-task-${props.color}_${props.id}-li-${taskCount}${task}`}>
                 { task }
             </li>
         );
         taskListElems.push(taskListElem);
+        taskCount++;
     }
 
     return (
