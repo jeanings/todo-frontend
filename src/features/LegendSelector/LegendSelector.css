@@ -1,8 +1,11 @@
 .Todo__legend {
     grid-column: 2 / -1;
     display: flex;
+    position: relative;
+    right: 0;
+    top: 0;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: center;
     row-gap: 0.5rem;
 }

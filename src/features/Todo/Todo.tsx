@@ -65,13 +65,13 @@ export const getGreeting = (showOnly: TodoProps['showOnly']): string => {
         based on <todo.showOnly> state.
     ------------------------------------------------------ */
     const greetingsForColors = {
-        'all': 'within 5 days',
+        'all': 'for the week, rolling',
         'solid': 'as soon as possible',
         'red': 'for today',
         'amber': 'for tomorrow',
         'green': 'in 2~3 days',
         'transparent': 'in 4 days',
-        'blank': '5+ days'
+        'blank': 'further out, 5+ days'
     };
 
     return greetingsForColors[showOnly];

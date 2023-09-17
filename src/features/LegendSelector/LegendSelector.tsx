@@ -16,7 +16,7 @@ const LegendSelector: React.FunctionComponent = () => {
         'all', 'solid', 'red', 'amber', 'green', 'transparent', 'blank'
     ];
     const labelPairs: LegendLabelsType = {
-        'all': 'All',
+        'all': 'For the week',
         'solid': 'ASAP',
         'red': 'Today',
         'amber': 'Tomorrow',

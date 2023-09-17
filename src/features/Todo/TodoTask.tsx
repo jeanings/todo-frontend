@@ -19,7 +19,10 @@ import './TodoTask.css';
             Rounded borders.
         'transparent'
             Tasks for 4 days out.
-            Circular borders.
+            Circular dotted borders.
+        'blank'
+            Tasks for 5+ days out.
+            Square dashed borders.
 =============================================================== */
 const TodoTask: React.FunctionComponent<TodoTaskProps> = (props: TodoTaskProps) => {
     const styledClassname: string = props.baseClassname;

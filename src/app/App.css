@@ -1,9 +1,10 @@
 .App {
+    height: 100%;
     display: grid;
-    grid-template-columns: 90% 10%;
+    grid-template-columns: 9fr 1fr;
     grid-template-rows: 100%;
-    min-width: 100%;
-    min-height: 100%;
+    column-gap: 2rem;
     justify-items: center;
+    align-items: center;
     font-family: 'Barlow', sans-serif;
 }
