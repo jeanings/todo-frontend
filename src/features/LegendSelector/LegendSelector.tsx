@@ -13,7 +13,7 @@ const LegendSelector: React.FunctionComponent = () => {
     const showOnly: TodoProps['showOnly'] = useAppSelector(state => state.todo.showOnly);
 
     const colors: LegendButtonProps['color'][] = [
-        'all', 'solid', 'red', 'amber', 'green', 'transparent'
+        'all', 'solid', 'red', 'amber', 'green', 'transparent', 'blank'
     ];
     const labelPairs: LegendLabelsType = {
         'all': 'All',
@@ -21,7 +21,8 @@ const LegendSelector: React.FunctionComponent = () => {
         'red': 'Today',
         'amber': 'Tomorrow',
         'green': '2~3 days',
-        'transparent': '4 days'
+        'transparent': '4 days',
+        'blank': '5+ days'
     };
     
     // Build list of selector buttons.

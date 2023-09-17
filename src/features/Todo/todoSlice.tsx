@@ -11,11 +11,12 @@ import { todoApiUri } from '../../app/App';
 /* ---------------------------------
     Todos fetcher for async thunk.
 --------------------------------- */
-export const requestToApi = (todoApiUri: string, request: any, method: any) => {
+export const requestToApi = (todoApiUri: string, endpoint: string, request: any, method: any) => {
+    const route: string = todoApiUri + endpoint;
     const requestedAction = Promise.resolve(
         axios({
             method: method,
-            url: todoApiUri,
+            url: route,
             data: request
         })
     )
@@ -30,8 +31,8 @@ export const createTodo = createAsyncThunk(
     'todo/createTodo',
     async(request: any, { rejectWithValue }) => {
         try {
-            const response: AxiosResponse = await requestToApi(todoApiUri, request, 'post');
-            if (response.status === 201) {  // 'Created' status code.
+            const response: AxiosResponse = await requestToApi(todoApiUri, 'create', request, 'post');
+            if (response.status === 201) {  // 'Created'
                 return (await response.data);
             }
         }
@@ -50,8 +51,8 @@ export const getTodos = createAsyncThunk(
     'todo/getTodos',
     async(request: any, { rejectWithValue }) => {
         try {
-            const response: AxiosResponse = await requestToApi(todoApiUri, request, 'get');
-            if (response.status === 200) {  // OK.
+            const response: AxiosResponse = await requestToApi(todoApiUri, 'getAll', request, 'get');
+            if (response.status === 200) {  // 'OK'
                 return (await response.data);
             }
         }
@@ -70,8 +71,8 @@ export const updateTodo = createAsyncThunk(
     'todo/updateTodo',
     async(request: any, { rejectWithValue }) => {
         try {
-            const response: AxiosResponse = await requestToApi(todoApiUri, request, 'patch');
-            if (response.status === 200) {  // OK.
+            const response: AxiosResponse = await requestToApi(todoApiUri, 'update', request, 'patch');
+            if (response.status === 200) {  // 'OK'
                 return (await response.data);
             }
         }
@@ -90,8 +91,8 @@ export const removeTodo = createAsyncThunk(
     'todo/removeTodo',
     async(request: any, { rejectWithValue }) => {
         try {
-            const response: AxiosResponse = await requestToApi(todoApiUri, request, 'delete');
-            if (response.status === 204) {  // 'No content' (removed) status code.
+            const response: AxiosResponse = await requestToApi(todoApiUri, 'delete', request, 'delete');
+            if (response.status === 200) {  // 'OK'
                 return (await response.data);
             }
         }
@@ -112,11 +113,7 @@ export const removeTodo = createAsyncThunk(
 --------------------------------------------- */
 const initialState: TodoProps = {
     status: 'uninitialized',
-    solid: null,            // spot, urgent ASAP tasks
-    red: null,              // daily
-    amber: null,            // tomorrow
-    green: null,            // in 2, 3 days
-    transparent: null,      // in 4 days, not urgent
+    todos: null,
     showOnly: 'all'
 };
 
@@ -157,55 +154,54 @@ const todosSlice = createSlice({
             state.showOnly = onlyShowFor;
         },
     },
-   
     extraReducers: (builder) => {
         builder
-            // Create thunks.
+            /* ---------------------------
+                Create (POST) reducer.
+            --------------------------- */
             .addCase(createTodo.fulfilled, (state, action) => {
 
             })
-            // Read thunks.
+            /* ---------------------------
+                Read (GET) reducer.
+            --------------------------- */
             .addCase(getTodos.fulfilled, (state, action) => {
                 // Save fetched todos into state.
                 const data = action.payload;
-                const { solid, red, amber, green, transparent } = data;
-                state.solid = solid
-                state.red = red
-                state.amber = amber
-                state.green = green
-                state.transparent = transparent
+                state.todos = data;
                 // Update statuses.
                 state.status = 'successful';
                 state.showOnly = 'all';
             })
-            // Update thunks.
+            /* ---------------------------
+                Update (PATCH) reducer.
+            --------------------------- */
             .addCase(updateTodo.fulfilled, (state, action) => {
-
+                const data = action.payload;
             })
-            // Delete thunks.
+            /* ---------------------------
+                Delete (DELETE) reducer.
+            --------------------------- */
             .addCase(removeTodo.fulfilled, (state, action) => {
-
+                const data = action.payload;
             })
       }
 });
 
 export interface TodoProps {
     [index: string]: string | null | TodoType[]
-    'status': 'uninitialized' | 'successful' | 'error',
-    'solid': TodoType[] | null,
-    'red': TodoType[] | null,
-    'amber': TodoType[] | null,
-    'green': TodoType[] | null,
-    'transparent': TodoType[] | null,
-    'showOnly': 'all' | 'solid' | 'red' | 'amber' | 'green' | 'transparent'
+    status: 'uninitialized' | 'successful' | 'error',
+    todos: TodoType[] | null,
+    showOnly: 'all' | 'solid' | 'red' | 'amber' | 'green' | 'transparent' | 'blank'
 };
 
 export interface TodoType {
-    'id': string,
-    'title': string,
-    'date': Date,
-    'tasks': string[],
-    'color'?: 'all' | 'solid' | 'red' | 'amber' | 'green' | 'transparent'
+    id: string,
+    title: string,
+    date: Date,
+    tasks: string[],
+    color?: 'all' | 'grey' | 'solid' | 'red' | 'amber' | 'green' | 'transparent' | 'blank',
+    completed: boolean
 };
 
 // Selector for todos state.
