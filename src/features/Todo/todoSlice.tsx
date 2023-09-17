@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, ActionMatchingAllOf } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
-// import { RootState } from '../../app/store';
+import { RootState } from '../../app/store';
 import { todoApiUri } from '../../app/App';
 
 
@@ -27,7 +27,7 @@ export const requestToApi = (todoApiUri: string, request: any, method: any) => {
     Async thunks for todos.
 ---------------------------------- */
 export const createTodo = createAsyncThunk(
-    'todos/createTodo',
+    'todo/createTodo',
     async(request: any, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, request, 'post');
@@ -47,7 +47,7 @@ export const createTodo = createAsyncThunk(
 );
 
 export const getTodos = createAsyncThunk(
-    'todos/getTodos',
+    'todo/getTodos',
     async(request: any, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, request, 'get');
@@ -67,7 +67,7 @@ export const getTodos = createAsyncThunk(
 );
 
 export const updateTodo = createAsyncThunk(
-    'todos/updateTodo',
+    'todo/updateTodo',
     async(request: any, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, request, 'patch');
@@ -87,7 +87,7 @@ export const updateTodo = createAsyncThunk(
 );
 
 export const removeTodo = createAsyncThunk(
-    'todos/removeTodo',
+    'todo/removeTodo',
     async(request: any, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, request, 'delete');
@@ -121,9 +121,43 @@ const initialState: TodoProps = {
 };
 
 const todosSlice = createSlice({
-    name: 'todos',
+    name: 'todo',
     initialState,
-    reducers: {},
+    reducers: {
+        // Set todo state for mocked fetches.
+        setTodos: (state, action) => {
+            // Helper function to filter for targeted todo 'color'.
+            const getTodoColors = (data: TodoType[], color: TodoType['color']): TodoType[] | null => {
+                const todosOfColor: TodoType[] = data.filter((todo: TodoType) => {
+                    return (todo.color === color);
+                });
+
+                if (todosOfColor.length > 0) {
+                    return todosOfColor;
+                }
+                else {
+                    return null;
+                }
+            };
+
+            // Set 'color' states.
+            const data: TodoType[] = action.payload;
+            state.solid = getTodoColors(data, 'solid');
+            state.red = getTodoColors(data, 'red');
+            state.amber = getTodoColors(data, 'amber');
+            state.green = getTodoColors(data, 'green');
+            state.transparent = getTodoColors(data, 'transparent');
+            // Update statuses.
+            state.status = 'successful';
+            state.showOnly = 'all';
+        },
+        // Handles filtering of todos to show by 'color'.
+        handleColorSelect: (state, action) => {
+            const onlyShowFor: TodoProps['showOnly'] = action.payload;
+            state.showOnly = onlyShowFor;
+        },
+    },
+   
     extraReducers: (builder) => {
         builder
             // Create thunks.
@@ -140,6 +174,7 @@ const todosSlice = createSlice({
                 state.amber = amber
                 state.green = green
                 state.transparent = transparent
+                // Update statuses.
                 state.status = 'successful';
                 state.showOnly = 'all';
             })
@@ -155,13 +190,13 @@ const todosSlice = createSlice({
 });
 
 export interface TodoProps {
-    [index: string]: string | null | TodoType
+    [index: string]: string | null | TodoType[]
     'status': 'uninitialized' | 'successful' | 'error',
-    'solid': TodoType | null,
-    'red': TodoType | null,
-    'amber': TodoType | null,
-    'green': TodoType | null,
-    'transparent': TodoType | null,
+    'solid': TodoType[] | null,
+    'red': TodoType[] | null,
+    'amber': TodoType[] | null,
+    'green': TodoType[] | null,
+    'transparent': TodoType[] | null,
     'showOnly': 'all' | 'solid' | 'red' | 'amber' | 'green' | 'transparent'
 };
 
@@ -169,10 +204,14 @@ export interface TodoType {
     'id': string,
     'title': string,
     'date': Date,
-    'tasks': string[]
+    'tasks': string[],
+    'color'?: 'all' | 'solid' | 'red' | 'amber' | 'green' | 'transparent'
 };
+
+// Selector for todos state.
+export const todoState = (state: RootState) => state.todo;
 
 // Export actions, reducers.
 const { actions, reducer } = todosSlice;
-export const {} = actions;
+export const { setTodos, handleColorSelect } = actions;
 export default reducer;

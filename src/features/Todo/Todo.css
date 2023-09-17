@@ -1,0 +1,19 @@
+.Todo {
+    display: grid;
+    grid-template-rows: 5rem auto;
+    grid-column: 1 / 2;
+    row-gap: 4rem;
+    padding: 5rem 5rem 5rem 10rem;
+}
+
+    .Todo__greet {
+        align-self: center;
+        text-align: center;
+    }
+
+    .Todo__tasks {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 2rem;
+        row-gap: 2rem;
+    }

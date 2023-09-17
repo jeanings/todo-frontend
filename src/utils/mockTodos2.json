@@ -1,0 +1,134 @@
+[
+    {
+        "id": "0",
+        "title": "Order",
+        "date": null,
+        "tasks": [
+            "coffee beans",
+            "coffee filters"
+        ],
+        "color": "solid"
+    },
+    {
+        "id": "1",
+        "title": "RESTOCK",
+        "date": null,
+        "tasks": [
+            "!!!!!!!!!!!!!",
+            "TOILET PAPER",
+            "!!!!!!!!!!!!!"
+        ],
+        "color": "solid"
+    },
+    {
+        "id": "2",
+        "title": "Garbage day",
+        "date": "Mon Sep 11 2023",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "color": "red"
+    },
+    {
+        "id": "3",
+        "title": "Return books",
+        "date": "Mon Sep 11 2023",
+        "tasks": [
+            "all of them"
+        ],
+        "color": "red"
+    },
+    {
+        "id": "4",
+        "title": "Pay bills",
+        "date": "Mon Sep 11 2023",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "color": "red"
+    },
+    {
+        "id": "5",
+        "title": "Car checkup",
+        "date": "Tues Sep 12 2023",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "color": "amber"
+    },
+    {
+        "id": "6",
+        "title": "Dough prep",
+        "date": "Tues Sep 12 2023",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "color": "amber"
+    },
+    {
+        "id": "7",
+        "title": "Recyclables day",
+        "date": "Wed Sep 13 2023",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "color": "amber"
+    },
+    {
+        "id": "8",
+        "title": "Coffee Event",
+        "date": "Thu Sep 14 2023",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "color": "green"
+    },
+    {
+        "id": "9",
+        "title": "Groceries",
+        "date": "Thu Sep 14 2023",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "color": "green"
+    },
+    {
+        "id": "10",
+        "title": "Dinner @Calvin's",
+        "date": "Fri Sep 15 2023",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "color": "transparent"
+    },
+    {
+        "id": "11",
+        "title": "Trip plan",
+        "date": "Fri Sep 15 2023",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "color": "transparent"
+    }
+]
