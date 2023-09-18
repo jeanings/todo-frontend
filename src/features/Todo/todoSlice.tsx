@@ -168,7 +168,9 @@ const todosSlice = createSlice({
                 Create (POST) reducer.
             --------------------------- */
             .addCase(createTodo.fulfilled, (state, action) => {
-
+                const data = action.payload;
+                // Update state with updated list of sorted todos.  
+                state.todos = data;
             })
             /* ---------------------------
                 Read (GET) reducer.

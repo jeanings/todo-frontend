@@ -14,7 +14,7 @@ const Editor: React.FunctionComponent = () => {
     const editorState = useAppSelector(state => state.editor);
     const updateEdit = useAppSelector(state => state.editor.updateDefaults);
     const defaults = updateEdit ? updateEdit : { title: '', date: '', tasks: '' };
-    const { register, handleSubmit, formState: { errors } } = useForm<EditorInputProps>({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<EditorInputProps>({
         defaultValues: {
             title: defaults.title,
             date: defaults.date,
@@ -25,10 +25,27 @@ const Editor: React.FunctionComponent = () => {
 
     const onCloseButtonClick = (event: React.SyntheticEvent) => {
         dispatch(toggleEditor([ false, editorState.editFor ]));
+        // Clear fields.
+        reset();
     };
 
-    const onEditorSubmit: SubmitHandler<EditorInputProps> = (data) => {
-        console.log(data);
+    const onEditorSubmit: SubmitHandler<EditorInputProps> = (formData) => {
+        switch (editorState.editFor) {
+            case 'create':
+                const dateObj = parseTodoDate(formData.date);
+                const payloadCreate = {
+                    title: formData.title,
+                    date: dateObj,
+                    tasks: formData.tasks
+                };
+                dispatch(createTodo(payloadCreate));
+                // Clear fields.
+                reset();
+                break;
+            case 'update':
+                console.log('editor updating')
+                break;
+        }
     };
 
     return ( // Conditional render.
@@ -70,13 +87,13 @@ const Editor: React.FunctionComponent = () => {
                 </label>
 
                 <label className={ `Editor__form__label date` }>
-                    Date
-                    <input { ...register("date", { pattern: /^[A-Za-z]+$/i }) } 
+                    Date {/*  { pattern: /^[A-Za-z]+$/i } */}
+                    <input { ...register("date") } 
                         placeholder={ 
                             defaults
                                 ? defaults.date
                                     ? `${defaults.date} (editing)`
-                                    : "DD/MM/YY or blank for ASAP todos"
+                                    : "YYYY/MM/DD or blank for ASAP todos"
                                 : `"blank - asap" (editing, format DD/MM/YYYY)`
                         }
                     />
@@ -114,6 +131,27 @@ const Editor: React.FunctionComponent = () => {
     );
 };
 
+
+const parseTodoDate = (formDate: string) => {
+    /* --------------------------------------
+        Parses date input and returns 
+        - empty string (ASAP todos)
+        - valid Date object
+    -------------------------------------- */
+    if (formDate.length === 0) {
+        // Blank date field -> ASAP todo, leave as-is.
+        return formDate;
+    }
+
+    const [ year, month, day ] = formDate.split('/')
+    const dateObj: Date = new Date( [year, month, day].join('-'));
+    
+    if (!dateObj.valueOf()) {
+        // formDate not valid Date object.
+        console.error("Date provided in Editor field is not valid.  YYYY/MM/DD or empty field accepted");
+    }
+    return dateObj;    
+};
 
 interface EditorInputProps {
     title: string,
