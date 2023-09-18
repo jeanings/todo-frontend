@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { TodoProps } from '../Todo/todoSlice';
+import { EditorInputProps } from './Editor';
 
 
 /* ===================================
@@ -16,7 +16,9 @@ const editorSlice = createSlice({
     name: 'editor',
     initialState,
     reducers: {
-        // Handles filtering of todos to show by 'color'.
+        /* ------------------------------------------------
+            Handles filtering of todos to show by 'color'.
+        ------------------------------------------------ */
         toggleEditor: (state, action) => {
             const [ toggle, editFor, updateDefaults ] = action.payload;
             state.editing = toggle;
@@ -27,10 +29,10 @@ const editorSlice = createSlice({
 });
 
 export interface EditorProps {
-    [index: string]: boolean | null | 'create' | 'update' | TodoProps | undefined
+    [index: string]: boolean | null | 'create' | 'update' | EditorInputProps
     editing: boolean,
     editFor: 'create' | 'update' | null,
-    updateDefaults:  | null
+    updateDefaults: EditorInputProps | null
 };
 
 export interface EditorTodoProps {

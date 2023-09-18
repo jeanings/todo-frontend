@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { createTodo, TodoType } from '../Todo/todoSlice';
-import './Editor.css';
+import { createTodo, updateTodo } from '../Todo/todoSlice';
 import { toggleEditor } from './editorSlice';
+import './Editor.css';
 
 
 /* =========================================================
@@ -12,8 +12,8 @@ import { toggleEditor } from './editorSlice';
 const Editor: React.FunctionComponent = () => {
     const dispatch = useAppDispatch();
     const editorState = useAppSelector(state => state.editor);
-    const updateEdit = useAppSelector(state => state.editor.updateDefaults);
-    const defaults = updateEdit ? updateEdit : { title: '', date: '', tasks: '' };
+    const updateDefaults = useAppSelector(state => state.editor.updateDefaults);
+    const defaults = updateDefaults ? updateDefaults : { title: '', date: '', tasks: '' };
     const { register, handleSubmit, reset, formState: { errors } } = useForm<EditorInputProps>({
         defaultValues: {
             title: defaults.title,
@@ -30,23 +30,41 @@ const Editor: React.FunctionComponent = () => {
     };
 
     const onEditorSubmit: SubmitHandler<EditorInputProps> = (formData) => {
+    /* ------------------------------------------------------
+        Dispatches different actions depending on which of
+        'create' or 'update' editor is open.
+    ------------------------------------------------------ */
+        const dateObj = parseTodoDate(formData.date as string);
         switch (editorState.editFor) {
             case 'create':
-                const dateObj = parseTodoDate(formData.date);
                 const payloadCreate = {
                     title: formData.title,
                     date: dateObj,
-                    tasks: formData.tasks
+                    tasks: formData.tasks   // string: if multiline, newline included 
                 };
                 dispatch(createTodo(payloadCreate));
                 // Clear fields.
                 reset();
                 break;
             case 'update':
-                console.log('editor updating')
+                if (!updateDefaults) {
+                    break;
+                }
+
+                const payloadUpdate = {
+                    id: updateDefaults.id,
+                    title: formData.title,
+                    date: dateObj,
+                    tasks: formData.tasks   // string: if multiline, newline included
+                };
+                dispatch(updateTodo(payloadUpdate));
+                
+                // Clear fields.
+                reset();
                 break;
         }
     };
+
 
     return ( // Conditional render.
         <> { editorState.editing &&
@@ -90,11 +108,11 @@ const Editor: React.FunctionComponent = () => {
                     Date {/*  { pattern: /^[A-Za-z]+$/i } */}
                     <input { ...register("date") } 
                         placeholder={ 
-                            defaults
-                                ? defaults.date
-                                    ? `${defaults.date} (editing)`
-                                    : "YYYY/MM/DD or blank for ASAP todos"
-                                : `"blank - asap" (editing, format DD/MM/YYYY)`
+                            defaults.date
+                                ? `${defaults.date} (editing)`
+                                : editorState.editFor === 'create'
+                                    ? "YYYY/MM/DD or blank for ASAP todos"
+                                    : `"blank" (editing, format DD/MM/YYYY)`
                         }
                     />
                         {
@@ -133,11 +151,11 @@ const Editor: React.FunctionComponent = () => {
 
 
 const parseTodoDate = (formDate: string) => {
-    /* --------------------------------------
-        Parses date input and returns 
-        - empty string (ASAP todos)
-        - valid Date object
-    -------------------------------------- */
+/* --------------------------------------
+    Parses date input and returns 
+    - empty string (ASAP todos)
+    - valid Date object
+-------------------------------------- */
     if (formDate.length === 0) {
         // Blank date field -> ASAP todo, leave as-is.
         return formDate;
@@ -153,10 +171,12 @@ const parseTodoDate = (formDate: string) => {
     return dateObj;    
 };
 
-interface EditorInputProps {
+export interface EditorInputProps {
+    id?: string,
     title: string,
-    date: string,
-    tasks: string
+    date: Date | string | undefined,
+    tasks: string,
+    completed?: boolean
 };
 
 type TasksValues = string[];

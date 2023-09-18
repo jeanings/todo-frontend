@@ -3,6 +3,8 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { deleteTodo, TodoType } from './todoSlice';
 import { toggleEditor } from '../Editor/editorSlice';
 import './TodoTaskButton.css';
+import { EditorInputProps } from '../Editor/Editor';
+
 
 /* ====================================================
     Button component for inside tasks: edit or delete.
@@ -14,21 +16,27 @@ const TodoTaskButton: React.FunctionComponent<TodoTaskButtonProps> = (props: Tod
 
 
     const onTaskButtonClick = (event: React.SyntheticEvent) => {
+    /* ------------------------------------------------------------
+        Handle clicks on either 'edit/update' or 'delete' button.
+    ------------------------------------------------------------ */
         switch(props.name) {
             case 'edit':
                 const parsedTasks = props.tasks
                     ? props.tasks.join('\n')
                     : '';
-                const thisTodo = {
-                    id: props.id,
-                    title: props.title,
-                    date: props.date,
-                    tasks: parsedTasks
-                };
 
-                editorToggle // TODO open but diff todo, change
-                    ? dispatch(toggleEditor([ false, 'update' ]))
-                    : dispatch(toggleEditor([ true, 'update', thisTodo ]));
+                if (props.title) {
+                    const thisTodo: EditorInputProps = {
+                        id: props.id,
+                        title: props.title,
+                        date: props.date,
+                        tasks: parsedTasks
+                    };
+
+                    editorToggle
+                        ? dispatch(toggleEditor([ false, 'update' ]))
+                        : dispatch(toggleEditor([ true, 'update', thisTodo ]));
+                }                
                 break;
             case 'delete':
                 dispatch(deleteTodo({ id: props.id }));
