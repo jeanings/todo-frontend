@@ -1,6 +1,7 @@
-import React, { useState }from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { deleteTodo, updateTodo, TodoType } from './todoSlice';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { deleteTodo, TodoType } from './todoSlice';
+import { toggleEditor } from '../Editor/editorSlice';
 import './TodoTaskButton.css';
 
 /* ====================================================
@@ -8,15 +9,30 @@ import './TodoTaskButton.css';
 ==================================================== */
 const TodoTaskButton: React.FunctionComponent<TodoTaskButtonProps> = (props: TodoTaskButtonProps) => {
     const dispatch = useAppDispatch();
+    const editorToggle = useAppSelector(state => state.editor.editing);
     const className: string = `${props.baseClassname}__button`;
 
 
     const onTaskButtonClick = (event: React.SyntheticEvent) => {
         switch(props.name) {
             case 'edit':
+                const parsedTasks = props.tasks
+                    ? props.tasks.join('\n')
+                    : '';
+                const thisTodo = {
+                    id: props.id,
+                    title: props.title,
+                    date: props.date,
+                    tasks: parsedTasks
+                };
+
+                editorToggle // TODO open but diff todo, change
+                    ? dispatch(toggleEditor([ false, 'update' ]))
+                    : dispatch(toggleEditor([ true, 'update', thisTodo ]));
                 break;
             case 'delete':
                 dispatch(deleteTodo({ id: props.id }));
+                break;
         }
     };
 
@@ -55,10 +71,13 @@ const getIcon = (name: 'edit' | 'delete', className: string, color: TodoType['co
 };
 
 export interface TodoTaskButtonProps {
-    'name': 'edit' | 'delete',
-    'baseClassname': string,
-    'id': TodoType['id'],
-    'color': TodoType['color']
+    name: 'edit' | 'delete',
+    baseClassname: string,
+    id: TodoType['id'],
+    title?: TodoType['title'],
+    date?: TodoType['date'],
+    tasks?: TodoType['tasks'],
+    color: TodoType['color']
 };
 
 export default TodoTaskButton;

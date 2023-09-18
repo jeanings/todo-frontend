@@ -1,15 +1,21 @@
-import React, { useState }from 'react';
-import { useAppDispatch } from '../../app/hooks';
-import { createTodo, TodoType } from '../Todo/todoSlice';
+import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { TodoType } from '../Todo/todoSlice';
+import { toggleEditor } from '../Editor/editorSlice';
 import './TodoCreator.css';
+
 
 /* =============================================
     Button component opening todo create form.
 ============================================= */
 const TodoCreator: React.FunctionComponent = () => {
+    const dispatch = useAppDispatch();
+    const editorToggle = useAppSelector(state => state.editor.editing);
 
     const onCreateButtonClick = (event: React.SyntheticEvent) => {
-        // open editor overlay for creating new todo.
+        editorToggle
+            ? dispatch(toggleEditor([ false, 'create' ]))
+            : dispatch(toggleEditor([ true, 'create' ]));
     };
 
     return (

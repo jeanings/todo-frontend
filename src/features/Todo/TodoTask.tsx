@@ -48,18 +48,21 @@ const TodoTask: React.FunctionComponent<TodoTaskProps> = (props: TodoTaskProps) 
     const editButton: JSX.Element = (
         <TodoTaskButton
             name='edit'
-            baseClassname={styledClassname}
-            id={props.id}
-            color={props.color}
+            baseClassname={ styledClassname }
+            id={ props.id }
+            title={ props.title }
+            date={ props.date }
+            tasks={ props.tasks }
+            color={ props.color }
         />
     );
 
     const deleteButton: JSX.Element = (
         <TodoTaskButton
             name='delete'
-            baseClassname={styledClassname}
-            id={props.id}
-            color={props.color}
+            baseClassname={ styledClassname }
+            id={ props.id }
+            color={ props.color }
         />
     );
 

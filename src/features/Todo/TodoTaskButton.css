@@ -15,10 +15,16 @@
 
     .Todo__tasks__box__icon {
         fill: #5a5a5a;
+        transition: 250ms all;
     }
 
 .Todo__tasks__box__icon:hover {
     fill: #ffffff;
+    transition: 250ms all;
+}
+
+.Todo__tasks__box__icon.blank:hover {
+    fill: rgba(var(--color-red), 1);
     transition: 250ms all;
 }
 
