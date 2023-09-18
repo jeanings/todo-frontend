@@ -2,7 +2,6 @@ import React from 'react';
 import { TodoType } from './todoSlice';
 import TodoTaskButton from './TodoTaskButton';
 import './TodoTask.css';
-import { JsxAttribute } from 'typescript';
 
 /* ===============================================================
     Constructor for creating individual todo task items.
@@ -50,6 +49,7 @@ const TodoTask: React.FunctionComponent<TodoTaskProps> = (props: TodoTaskProps) 
         <TodoTaskButton
             name='edit'
             baseClassname={styledClassname}
+            id={props.id}
             color={props.color}
         />
     );
@@ -58,6 +58,7 @@ const TodoTask: React.FunctionComponent<TodoTaskProps> = (props: TodoTaskProps) 
         <TodoTaskButton
             name='delete'
             baseClassname={styledClassname}
+            id={props.id}
             color={props.color}
         />
     );

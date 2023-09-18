@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, ActionMatchingAllOf } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
 import { RootState } from '../../app/store';
 import { todoApiUri } from '../../app/App';
@@ -12,7 +12,15 @@ import { todoApiUri } from '../../app/App';
     Todos fetcher for async thunk.
 --------------------------------- */
 export const requestToApi = (todoApiUri: string, endpoint: string, request: any, method: any) => {
-    const route: string = todoApiUri + endpoint;
+    let route: string = todoApiUri + endpoint;
+    switch (endpoint) {
+        case 'delete':
+            route = `${route}/${request.id}`;
+            break;
+        default: 
+            break;
+    }
+
     const requestedAction = Promise.resolve(
         axios({
             method: method,
@@ -87,8 +95,8 @@ export const updateTodo = createAsyncThunk(
     }
 );
 
-export const removeTodo = createAsyncThunk(
-    'todo/removeTodo',
+export const deleteTodo = createAsyncThunk(
+    'todo/deleteTodo',
     async(request: any, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, 'delete', request, 'delete');
@@ -182,8 +190,13 @@ const todosSlice = createSlice({
             /* ---------------------------
                 Delete (DELETE) reducer.
             --------------------------- */
-            .addCase(removeTodo.fulfilled, (state, action) => {
+            .addCase(deleteTodo.fulfilled, (state, action) => {
                 const data = action.payload;
+                
+                if (state.todos) {
+                    const todosWithoutDeleted = state.todos.filter((todo: TodoType) => todo.id !== data.id);
+                    state.todos = todosWithoutDeleted;
+                }
             })
       }
 });

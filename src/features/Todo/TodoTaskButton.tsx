@@ -1,15 +1,30 @@
-import React from 'react';
-import { TodoType } from './todoSlice';
+import React, { useState }from 'react';
+import { useAppDispatch } from '../../app/hooks';
+import { deleteTodo, updateTodo, TodoType } from './todoSlice';
 import './TodoTaskButton.css';
 
 /* ====================================================
     Button component for inside tasks: edit or delete.
 ==================================================== */
 const TodoTaskButton: React.FunctionComponent<TodoTaskButtonProps> = (props: TodoTaskButtonProps) => {
+    const dispatch = useAppDispatch();
     const className: string = `${props.baseClassname}__button`;
+
+
+    const onTaskButtonClick = (event: React.SyntheticEvent) => {
+        switch(props.name) {
+            case 'edit':
+                break;
+            case 'delete':
+                dispatch(deleteTodo({ id: props.id }));
+        }
+    };
+
+
     return (
         <button className={ `${className} ${props.name} ${props.color}` }
-            aria-label={ `button to ${props.name} for tasks` }>
+            aria-label={ `button to ${props.name} for tasks` }
+            onClick={ onTaskButtonClick }>
             { getIcon(props.name, props.baseClassname, props.color) }
         </button>
     );
@@ -42,6 +57,7 @@ const getIcon = (name: 'edit' | 'delete', className: string, color: TodoType['co
 export interface TodoTaskButtonProps {
     'name': 'edit' | 'delete',
     'baseClassname': string,
+    'id': TodoType['id'],
     'color': TodoType['color']
 };
 
