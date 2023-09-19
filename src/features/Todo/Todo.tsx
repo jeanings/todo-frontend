@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { DEV_BACKEND } from '../../app/App';
-import { setTodos, TodoProps, TodoType } from './todoSlice';
+import { 
+    getTodos,
+    TodoProps, 
+    TodoType } from './todoSlice';
 import TodoTask, { TodoTaskProps } from './TodoTask';
-// import todos from '../../utils/mockTodos.json';
-import todos from '../../utils/mockTodos2.json';
 import './Todo.css';
 
 
@@ -15,39 +15,25 @@ import './Todo.css';
 const Todo: React.FunctionComponent = () => {
     const dispatch = useAppDispatch();
     const todoState = useAppSelector(state => state.todo);
+    const todos = todoState.todos;
     const showOnly: TodoProps['showOnly'] = todoState.showOnly;
+
     
     // Fetch todos on init render.
     useEffect(() => {
         if (todoState.status === 'uninitialized') {
-            if (DEV_BACKEND === 'Off') {
-                // for development only, mocked action to set state.
-                dispatch(setTodos(todos));
-            }
+            dispatch(getTodos({}));
         }
-    }, [todoState.status]);
+    }, []);
 
 
     // Build list of TodoTask elements.
     let todoTaskElems: React.ReactElement<TodoTaskProps>[] = [];
-    if (todoState.status === 'successful') {
-        const todosToBuild: (TodoType[] | null)[]= [
-            todoState.solid,
-            todoState.red,
-            todoState.amber,
-            todoState.green,
-            todoState.transparent
-        ];
-
-        for (let colorToBuild of todosToBuild) {
-            if (colorToBuild === null) {
-                continue;
-            }
-
-            const todoElemsOfColor = buildTodoTasks(colorToBuild);
-            todoTaskElems = [...todoTaskElems, ...todoElemsOfColor];
-        };
+    if (todoState.status === 'successful' && todos) {
+        const todosToBuild: TodoType[] = findTodosOfColor(todos, showOnly);
+        todoTaskElems = buildTodoTasks(todosToBuild);
     }
+
 
     return (
         <div className="Todo"
@@ -58,7 +44,7 @@ const Todo: React.FunctionComponent = () => {
                 role="heading"
                 aria-label="todo greeter">
                 {/* Dynamically change greeting based on selected 'color' */}
-                { "ToDos" + " " + getGreeting(showOnly) }
+                { `ToDos ${getGreeting(showOnly)}` }
             </h1>
         
             {/* Render list of todo item components */}
@@ -80,16 +66,47 @@ export const getGreeting = (showOnly: TodoProps['showOnly']): string => {
         based on <todo.showOnly> state.
     ------------------------------------------------------ */
     const greetingsForColors = {
-        'all': 'within 5 days',
+        'all': 'for the week, rolling',
         'solid': 'as soon as possible',
         'red': 'for today',
         'amber': 'for tomorrow',
         'green': 'in 2~3 days',
-        'transparent': 'in 4 days'
+        'transparent': 'in 4 days',
+        'blank': 'further out, 5+ days'
     };
 
     return greetingsForColors[showOnly];
 };
+
+
+
+const findTodosOfColor = (todosOfColor: TodoType[], targetColor: TodoProps['showOnly']): TodoType[] => {
+    let foundTodosOfColor: TodoType[] = [];
+    
+    if (targetColor === 'all') {
+        foundTodosOfColor = todosOfColor.filter((todo: TodoType) => {
+            let result: boolean = false;
+            switch (todo.color) {
+                case 'grey':
+                    break;
+                case 'blank':
+                    break;
+                default:
+                    result = true;
+            }
+            return result;
+        });
+    }
+    else {
+        foundTodosOfColor = todosOfColor.filter((todo: TodoType) => {
+            return todo.color === targetColor;
+        });
+    }
+    
+    return foundTodosOfColor;
+};
+
+
 
 const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskProps>[] => {
     /* ------------------------------------------------------
@@ -99,7 +116,7 @@ const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskPr
     // Build TodoTasks.
     let todoTasks: React.ReactElement<TodoTaskProps>[]= [];
     todoTasks = todosOfColor.map((coloredTodo: TodoType) => {
-        const baseClassName: string = "Todo__tasks-" + coloredTodo.color;
+        const baseClassName: string = "Todo__tasks";
         
         const todoTask: React.ReactElement<TodoTaskProps> = (
             <TodoTask 
@@ -109,6 +126,7 @@ const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskPr
                 title={ coloredTodo.title }
                 date={ coloredTodo.date }
                 tasks={ coloredTodo.tasks }
+                completed={ coloredTodo.completed }
                 key={ `key-task-${coloredTodo.color}_${coloredTodo.id}` }
             />
         );

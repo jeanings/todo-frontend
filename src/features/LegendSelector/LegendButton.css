@@ -34,16 +34,21 @@
 
     .Todo__legend__button__indicator.solid {
         fill: var(--color-solid);
+        transform: scale(1.3);
     }
 
     .Todo__legend__button__indicator.red {
-        fill: rgba(var(--color-red), 0.75);;
+        fill: rgba(var(--color-red), 0.75);
     }
 
     .Todo__legend__button__indicator.amber {
-        fill: rgba(var(--color-amber), 0.75);;
+        fill: rgba(var(--color-amber), 0.75);
     }
 
     .Todo__legend__button__indicator.green {
-        fill: rgba(var(--color-green), 0.75);;
+        fill: rgba(var(--color-green), 0.75);
+    }
+
+    .Todo__legend__button__indicator.blank{
+        transform: scale(1.3);
     }
