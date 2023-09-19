@@ -17,6 +17,7 @@ const Todo: React.FunctionComponent = () => {
     const todoState = useAppSelector(state => state.todo);
     const todos = todoState.todos;
     const showOnly: TodoProps['showOnly'] = todoState.showOnly;
+
     
     // Fetch todos on init render.
     useEffect(() => {

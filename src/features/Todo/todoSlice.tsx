@@ -17,6 +17,9 @@ export const requestToApi = (todoApiUri: string, endpoint: string, request: any,
         case 'delete':
             route = `${route}/${request.id}`;
             break;
+        case 'update':
+            route = `${route}/${request.id}`;
+            break;
         default: 
             break;
     }
@@ -168,7 +171,9 @@ const todosSlice = createSlice({
                 Create (POST) reducer.
             --------------------------- */
             .addCase(createTodo.fulfilled, (state, action) => {
-
+                const data = action.payload;
+                // Update state with updated list of sorted todos.  
+                state.todos = data;
             })
             /* ---------------------------
                 Read (GET) reducer.
@@ -186,6 +191,8 @@ const todosSlice = createSlice({
             --------------------------- */
             .addCase(updateTodo.fulfilled, (state, action) => {
                 const data = action.payload;
+                // Update state with updated list of sorted todos.  
+                state.todos = data;
             })
             /* ---------------------------
                 Delete (DELETE) reducer.
