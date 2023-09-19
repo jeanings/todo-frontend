@@ -12,6 +12,7 @@ import './Editor.css';
 const Editor: React.FunctionComponent = () => {
     const dispatch = useAppDispatch();
     const editorState = useAppSelector(state => state.editor);
+    const datePattern: RegExp = new RegExp(/(20)[2-9]{2}\/([0][1-9]|[1][0-2])\/([0][1-9]|[12][0-9]|[3][01])/, 'i');
     const updateDefaults = useAppSelector(state => state.editor.updateDefaults);
     const defaults = updateDefaults ? updateDefaults : { title: '', date: '', tasks: '' };
     const { register, handleSubmit, reset, formState: { errors } } = useForm<EditorInputProps>({
@@ -105,20 +106,23 @@ const Editor: React.FunctionComponent = () => {
                 </label>
 
                 <label className={ `Editor__form__label date` }>
-                    Date {/*  { pattern: /^[A-Za-z]+$/i } */}
-                    <input { ...register("date") } 
+                    Date
+                    <input { ...register("date", { 
+                            required: true, 
+                            pattern: { value: datePattern, message: 'Check date formatting.' }
+                        })} 
                         placeholder={ 
                             defaults.date
                                 ? `${defaults.date} (editing)`
                                 : editorState.editFor === 'create'
                                     ? "YYYY/MM/DD or blank for ASAP todos"
-                                    : `"blank" (editing, format DD/MM/YYYY)`
+                                    : `"blank" (editing, format YYYY/MM/DD)`
                         }
                     />
                         {
                             errors.date
                             && <span className="Editor__form__label__error">
-                                Date is needs to be in format ex: 31/10/2022.
+                                Date needs to be in format ex: 2023/12/31
                             </span> 
                         }
                 </label>
