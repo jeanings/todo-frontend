@@ -108,7 +108,7 @@ const Editor: React.FunctionComponent = () => {
                 <label className={ `Editor__form__label date` }>
                     Date
                     <input { ...register("date", { 
-                            required: true, 
+                            required: false, 
                             pattern: { value: datePattern, message: 'Check date formatting.' }
                         })} 
                         placeholder={ 
@@ -181,12 +181,6 @@ export interface EditorInputProps {
     date: Date | string | undefined,
     tasks: string,
     completed?: boolean
-};
-
-type TasksValues = string[];
-
-export interface EditorProps {
-    
 };
 
 export default Editor;
