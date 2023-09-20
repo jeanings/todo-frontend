@@ -26,7 +26,6 @@ const Todo: React.FunctionComponent = () => {
         }
     }, []);
 
-
     // Build list of TodoTask elements.
     let todoTaskElems: React.ReactElement<TodoTaskProps>[] = [];
     if (todoState.status === 'successful' && todos) {
@@ -61,10 +60,10 @@ const Todo: React.FunctionComponent = () => {
 
 
 export const getGreeting = (showOnly: TodoProps['showOnly']): string => {
-    /* ------------------------------------------------------
-        Helper to dynamically change heading text
-        based on <todo.showOnly> state.
-    ------------------------------------------------------ */
+/* ------------------------------------------------------
+    Helper to dynamically change heading text
+    based on <todo.showOnly> state.
+------------------------------------------------------ */
     const greetingsForColors = {
         'all': 'for the week, rolling',
         'solid': 'as soon as possible',
@@ -79,14 +78,18 @@ export const getGreeting = (showOnly: TodoProps['showOnly']): string => {
 };
 
 
-
 const findTodosOfColor = (todosOfColor: TodoType[], targetColor: TodoProps['showOnly']): TodoType[] => {
+/* -----------------------------------------------------------
+    Helper to filter for todos based on the current selected
+    <showOnly> state.
+----------------------------------------------------------- */
     let foundTodosOfColor: TodoType[] = [];
     
     if (targetColor === 'all') {
         foundTodosOfColor = todosOfColor.filter((todo: TodoType) => {
             let result: boolean = false;
             switch (todo.color) {
+                // Skip 'grey' and 'blank' for show 'all' (current week only) selection.
                 case 'grey':
                     break;
                 case 'blank':
@@ -107,12 +110,11 @@ const findTodosOfColor = (todosOfColor: TodoType[], targetColor: TodoProps['show
 };
 
 
-
 const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskProps>[] => {
-    /* ------------------------------------------------------
-        Helper to build TodoTask components for every todo in
-        each 'color' lists in <todo>.
-    ------------------------------------------------------ */
+/* --------------------------------------------------------
+    Helper to build TodoTask components for every todo in
+    each 'color' lists in <todo>.
+-------------------------------------------------------- */
     // Build TodoTasks.
     let todoTasks: React.ReactElement<TodoTaskProps>[]= [];
     todoTasks = todosOfColor.map((coloredTodo: TodoType) => {
