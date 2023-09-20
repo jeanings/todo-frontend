@@ -165,8 +165,9 @@ const parseTodoDate = (formDate: string) => {
         return formDate;
     }
 
-    const [ year, month, day ] = formDate.split('/')
-    const dateObj: Date = new Date( [year, month, day].join('-'));
+    const [ year, month, day ] = formDate.split('/')           // required for correct timezone.
+    const dateString: string = [year, month, day].join('-') + "T00:00";
+    const dateObj: Date = new Date(dateString);
     
     if (!dateObj.valueOf()) {
         // formDate not valid Date object.
