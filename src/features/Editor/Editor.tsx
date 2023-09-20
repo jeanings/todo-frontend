@@ -70,7 +70,7 @@ const Editor: React.FunctionComponent = () => {
     return ( // Conditional render.
         <> { editorState.editing &&
         <div className="Editor"
-            role="figure"
+            role="main"
             aria-label="editor container">
             
             <h1>ToDo Editor</h1>
@@ -145,7 +145,9 @@ const Editor: React.FunctionComponent = () => {
                         }
                 </label>
                 
-                <input type="submit" value={ editorState.editFor ? editorState.editFor : "submit" } />
+                <input type="submit"
+                    aria-label="editor submit button"
+                    value={ editorState.editFor ? editorState.editFor : "submit" } />
 
             </form>
         </div>

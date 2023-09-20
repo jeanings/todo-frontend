@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, isRejectedWithValue } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
 import { RootState } from '../../app/store';
 import { todoApiUri } from '../../app/App';
@@ -30,8 +30,7 @@ export const requestToApi = (todoApiUri: string, endpoint: string, request: any,
             url: route,
             data: request
         })
-    )
-
+    );
     return requestedAction;
 };
 
@@ -204,6 +203,12 @@ const todosSlice = createSlice({
                     const todosWithoutDeleted = state.todos.filter((todo: TodoType) => todo.id !== data.id);
                     state.todos = todosWithoutDeleted;
                 }
+            })
+            /* --------------------------------------- 
+                Catches errors on fetching from API.
+            --------------------------------------- */
+            .addMatcher(isRejectedWithValue(getTodos), (state, action) => {
+                state.status = 'error';
             })
       }
 });
