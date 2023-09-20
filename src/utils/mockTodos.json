@@ -1,1 +1,991 @@
-[{"id":"0","title":"Garbage day","date":"Mon Sep 11 2023","tasks":["compostable"],"color":null},{"id":"1","title":"Recycle day","date":"Mon Sep 11 2023","tasks":["aluminum"],"color":null},{"id":"2","title":"Pay bills","date":"Mon Sep 11 2023","tasks":["water","credit card","gas"],"color":null},{"id":"3","title":"Return stuff","date":"Wed Sep 13 2023","tasks":["library books"],"color":null},{"id":"4","title":"Grocery list","date":"Fri Sep 15 2023","tasks":["curry ingredients","spices","chicken","pork","soymilk","fish sauce","mayo","soy sauce","tofu"],"color":"amber"},{"id":"5","title":"Garbage day","date":"Fri Sep 15 2023","tasks":["compostable"],"color":"amber"},{"id":"6","title":"Garbage day","date":"Fri Sep 15 2023","tasks":["compostable"],"color":"amber"},{"id":"7","title":"Pay bills","date":"Mon Sep 18 2023","tasks":["credit card","electricity"],"color":"transparent"},{"id":"8","title":"Grocery list","date":"Mon Sep 18 2023","tasks":["tofu","fish","eggs","pork","soymilk"],"color":"transparent"},{"id":"9","title":"Recycle day","date":"Mon Sep 18 2023","tasks":["paper"],"color":"transparent"},{"id":"10","title":"Grocery list","date":"Mon Sep 18 2023","tasks":["eggs"],"color":"transparent"},{"id":"11","title":"Return stuff","date":"Wed Sep 20 2023","tasks":["library books"],"color":null},{"id":"12","title":"Garbage day","date":"Wed Sep 20 2023","tasks":["compostable"],"color":null},{"id":"13","title":"Pay bills","date":"Wed Sep 20 2023","tasks":["credit card"],"color":null},{"id":"14","title":"Grocery list","date":"Thu Sep 21 2023","tasks":["eggs"],"color":null},{"id":"15","title":"Garbage day","date":"Thu Sep 21 2023","tasks":["compostable"],"color":null},{"id":"16","title":"Garbage day","date":"Thu Sep 21 2023","tasks":["compostable"],"color":null},{"id":"17","title":"Return stuff","date":"Fri Sep 22 2023","tasks":["library books"],"color":null},{"id":"18","title":"Recycle day","date":"Fri Sep 22 2023","tasks":["paper"],"color":null},{"id":"19","title":"Garbage day","date":"Fri Sep 22 2023","tasks":["compostable"],"color":null},{"id":"20","title":"Pay bills","date":"Fri Sep 22 2023","tasks":["credit card"],"color":null},{"id":"21","title":"Pay bills","date":"Tue Sep 26 2023","tasks":["credit card"],"color":null},{"id":"22","title":"Pay bills","date":"Tue Sep 26 2023","tasks":["credit card"],"color":null},{"id":"23","title":"Return stuff","date":"Tue Sep 26 2023","tasks":["library books"],"color":null},{"id":"24","title":"Return stuff","date":"Wed Sep 27 2023","tasks":["library books"],"color":null},{"id":"25","title":"Pay bills","date":"Wed Sep 27 2023","tasks":["credit card"],"color":null},{"id":"26","title":"Recycle day","date":"Wed Sep 27 2023","tasks":["paper"],"color":null},{"id":"27","title":"Garbage day","date":"Thu Sep 28 2023","tasks":["compostable"],"color":null},{"id":"28","title":"Pay bills","date":"Thu Sep 28 2023","tasks":["credit card"],"color":null},{"id":"29","title":"Recycle day","date":"Thu Sep 28 2023","tasks":["paper"],"color":null},{"id":"30","title":"Garbage day","date":"Thu Sep 28 2023","tasks":["compostable"],"color":null},{"id":"31","title":"Pay bills","date":"Thu Sep 28 2023","tasks":["credit card"],"color":null},{"id":"32","title":"Pay bills","date":"Thu Sep 28 2023","tasks":["credit card"],"color":null},{"id":"33","title":"Recycle day","date":"Fri Sep 29 2023","tasks":["paper"],"color":null},{"id":"34","title":"Pay bills","date":"Fri Sep 29 2023","tasks":["credit card"],"color":null},{"id":"35","title":"Return stuff","date":"Fri Sep 29 2023","tasks":["library books"],"color":null},{"id":"36","title":"Pay bills","date":"Fri Sep 29 2023","tasks":["credit card"],"color":null},{"id":"37","title":"Pay bills","date":"Fri Sep 29 2023","tasks":["credit card"],"color":null},{"id":"38","title":"Garbage day","date":"Mon Oct 02 2023","tasks":["compostable"],"color":null},{"id":"39","title":"Garbage day","date":"Tue Oct 03 2023","tasks":["compostable"],"color":null},{"id":"40","title":"Return stuff","date":"Tue Oct 03 2023","tasks":["library books"],"color":null},{"id":"41","title":"Grocery list","date":"Tue Oct 03 2023","tasks":["eggs"],"color":null},{"id":"42","title":"Garbage day","date":"Tue Oct 03 2023","tasks":["compostable"],"color":null},{"id":"43","title":"Grocery list","date":"Tue Oct 03 2023","tasks":["eggs"],"color":null},{"id":"44","title":"Garbage day","date":"Wed Oct 04 2023","tasks":["compostable"],"color":null},{"id":"45","title":"Garbage day","date":"Wed Oct 04 2023","tasks":["compostable"],"color":null},{"id":"46","title":"Pay bills","date":"Wed Oct 04 2023","tasks":["credit card"],"color":null},{"id":"47","title":"Pay bills","date":"Wed Oct 04 2023","tasks":["credit card"],"color":null},{"id":"48","title":"Return stuff","date":"Wed Oct 04 2023","tasks":["library books"],"color":null},{"id":"49","title":"Recycle day","date":"Thu Oct 05 2023","tasks":["paper"],"color":null},{"id":"50","title":"Grocery list","date":"Thu Oct 05 2023","tasks":["eggs"],"color":null},{"id":"51","title":"Recycle day","date":"Thu Oct 05 2023","tasks":["paper"],"color":null},{"id":"52","title":"Pay bills","date":"Thu Oct 05 2023","tasks":["credit card"],"color":null},{"id":"53","title":"Garbage day","date":"Thu Oct 05 2023","tasks":["compostable"],"color":null},{"id":"54","title":"Pay bills","date":"Fri Oct 06 2023","tasks":["credit card"],"color":null},{"id":"55","title":"Garbage day","date":"Fri Oct 06 2023","tasks":["compostable"],"color":null},{"id":"56","title":"Garbage day","date":"Fri Oct 06 2023","tasks":["compostable"],"color":null},{"id":"57","title":"Recycle day","date":"Fri Oct 06 2023","tasks":["paper"],"color":null},{"id":"58","title":"Return stuff","date":"Fri Oct 06 2023","tasks":["library books"],"color":null},{"id":"59","title":"Recycle day","date":"Mon Oct 09 2023","tasks":["paper"],"color":null},{"id":"60","title":"Pay bills","date":"Mon Oct 09 2023","tasks":["credit card"],"color":null},{"id":"61","title":"Garbage day","date":"Mon Oct 09 2023","tasks":["compostable"],"color":null},{"id":"62","title":"Grocery list","date":"Mon Oct 09 2023","tasks":["eggs"],"color":null},{"id":"63","title":"Return stuff","date":"Tue Oct 10 2023","tasks":["library books"],"color":null},{"id":"64","title":"Recycle day","date":"Tue Oct 10 2023","tasks":["paper"],"color":null},{"id":"65","title":"Grocery list","date":"Tue Oct 10 2023","tasks":["eggs"],"color":null},{"id":"66","title":"Pay bills","date":"Tue Oct 10 2023","tasks":["credit card"],"color":null},{"id":"67","title":"Garbage day","date":"Tue Oct 10 2023","tasks":["compostable"],"color":null},{"id":"68","title":"Grocery list","date":"Tue Oct 10 2023","tasks":["eggs"],"color":null},{"id":"69","title":"Return stuff","date":"Wed Oct 11 2023","tasks":["library books"],"color":null},{"id":"70","title":"Garbage day","date":"Thu Oct 12 2023","tasks":["compostable"],"color":null},{"id":"71","title":"Garbage day","date":"Thu Oct 12 2023","tasks":["compostable"],"color":null},{"id":"72","title":"Return stuff","date":"Thu Oct 12 2023","tasks":["library books"],"color":null},{"id":"73","title":"Return stuff","date":"Fri Oct 13 2023","tasks":["library books"],"color":null},{"id":"74","title":"Pay bills","date":"Mon Oct 16 2023","tasks":["credit card"],"color":null},{"id":"75","title":"Return stuff","date":"Tue Oct 17 2023","tasks":["library books"],"color":null},{"id":"76","title":"Pay bills","date":"Tue Oct 17 2023","tasks":["credit card"],"color":null},{"id":"77","title":"Grocery list","date":"Tue Oct 17 2023","tasks":["eggs"],"color":null},{"id":"78","title":"Recycle day","date":"Tue Oct 17 2023","tasks":["paper"],"color":null},{"id":"79","title":"Garbage day","date":"Wed Oct 18 2023","tasks":["compostable"],"color":null},{"id":"80","title":"Recycle day","date":"Wed Oct 18 2023","tasks":["paper"],"color":null},{"id":"81","title":"Pay bills","date":"Wed Oct 18 2023","tasks":["credit card"],"color":null},{"id":"82","title":"Garbage day","date":"Thu Oct 19 2023","tasks":["compostable"],"color":null},{"id":"83","title":"Pay bills","date":"Thu Oct 19 2023","tasks":["credit card"],"color":null},{"id":"84","title":"Garbage day","date":"Thu Oct 19 2023","tasks":["compostable"],"color":null},{"id":"85","title":"Pay bills","date":"Thu Oct 19 2023","tasks":["credit card"],"color":null},{"id":"86","title":"Pay bills","date":"Fri Oct 20 2023","tasks":["credit card"],"color":null},{"id":"87","title":"Pay bills","date":"Fri Oct 20 2023","tasks":["credit card"],"color":null},{"id":"88","title":"Garbage day","date":"Fri Oct 20 2023","tasks":["compostable"],"color":null},{"id":"89","title":"Garbage day","date":"Fri Oct 20 2023","tasks":["compostable"],"color":null},{"id":"90","title":"RESTOCK","date":null,"tasks":["get coffee beans"],"color":"solid"},{"id":"91","title":"RESTOCK","date":null,"tasks":["get coffee filters"],"color":"solid"},{"id":"92","title":"RESTOCK","date":null,"tasks":["BUY TOILET PAPER"],"color":"solid"}]
+[
+    {
+        "id": "650923396d4e4712df326abe",
+        "title": "Order",
+        "tasks": [
+            "coffee beans",
+            "coffee filters"
+        ],
+        "completed": false,
+        "color": "solid"
+    },
+    {
+        "id": "650923396d4e4712df326ac0",
+        "title": "RESTOCK",
+        "tasks": [
+            "!!!!!!!!!!!!!",
+            "TOILET PAPER",
+            "!!!!!!!!!!!!!"
+        ],
+        "completed": false,
+        "color": "solid"
+    },
+    {
+        "id": "650923396d4e4712df326ac2",
+        "title": "Garbage day",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "completed": false,
+        "date": "Mon Sep 11 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ac4",
+        "title": "Return books",
+        "tasks": [
+            "all of them"
+        ],
+        "completed": false,
+        "date": "Mon Sep 11 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ac6",
+        "title": "Pay bills",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "completed": false,
+        "date": "Mon Sep 11 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ac8",
+        "title": "Car checkup",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "completed": false,
+        "date": "Tue Sep 12 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326aca",
+        "title": "Dough prep",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "completed": false,
+        "date": "Tue Sep 12 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326acc",
+        "title": "Recyclables day",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "completed": false,
+        "date": "Wed Sep 13 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ace",
+        "title": "Coffee Event",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "completed": false,
+        "date": "Thu Sep 14 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ad0",
+        "title": "Groceries",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "completed": false,
+        "date": "Thu Sep 14 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ad2",
+        "title": "Dinner @Calvin's",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "completed": false,
+        "date": "Fri Sep 15 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ad4",
+        "title": "Trip plan",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "completed": false,
+        "date": "Fri Sep 15 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ad6",
+        "title": "Garbage day",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "completed": false,
+        "date": "Mon Sep 18 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ad8",
+        "title": "Return books",
+        "tasks": [
+            "all of them"
+        ],
+        "completed": false,
+        "date": "Mon Sep 18 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326ada",
+        "title": "Pay bills",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "completed": false,
+        "date": "Mon Sep 18 2023",
+        "color": "grey"
+    },
+    {
+        "id": "650923396d4e4712df326adc",
+        "title": "Car checkup",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "completed": false,
+        "date": "Tue Sep 19 2023",
+        "color": "red"
+    },
+    {
+        "id": "650923396d4e4712df326ade",
+        "title": "Dough prep",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "completed": false,
+        "date": "Tue Sep 19 2023",
+        "color": "red"
+    },
+    {
+        "id": "650923396d4e4712df326ae0",
+        "title": "Recyclables day",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "completed": false,
+        "date": "Wed Sep 20 2023",
+        "color": "amber"
+    },
+    {
+        "id": "650923396d4e4712df326ae2",
+        "title": "Coffee Event",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "completed": false,
+        "date": "Thu Sep 21 2023",
+        "color": "green"
+    },
+    {
+        "id": "650923396d4e4712df326ae4",
+        "title": "Groceries",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "completed": false,
+        "date": "Thu Sep 21 2023",
+        "color": "green"
+    },
+    {
+        "id": "650923396d4e4712df326ae6",
+        "title": "Dinner @Calvin's",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "completed": false,
+        "date": "Fri Sep 22 2023",
+        "color": "green"
+    },
+    {
+        "id": "650923396d4e4712df326ae8",
+        "title": "Trip plan",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "completed": false,
+        "date": "Fri Sep 22 2023",
+        "color": "green"
+    },
+    {
+        "id": "650923396d4e4712df326aea",
+        "title": "Garbage day",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "completed": false,
+        "date": "Mon Sep 25 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326aec",
+        "title": "Return books",
+        "tasks": [
+            "all of them"
+        ],
+        "completed": false,
+        "date": "Mon Sep 25 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326aee",
+        "title": "Pay bills",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "completed": false,
+        "date": "Mon Sep 25 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326af0",
+        "title": "Car checkup",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "completed": false,
+        "date": "Tue Sep 26 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326af2",
+        "title": "Dough prep",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "completed": false,
+        "date": "Tue Sep 26 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326af4",
+        "title": "Recyclables day",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "completed": false,
+        "date": "Wed Sep 27 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326af6",
+        "title": "Coffee Event",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "completed": false,
+        "date": "Thu Sep 28 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326af8",
+        "title": "Groceries",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "completed": false,
+        "date": "Thu Sep 28 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326afa",
+        "title": "Dinner @Calvin's",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "completed": false,
+        "date": "Fri Sep 29 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326afc",
+        "title": "Trip plan",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "completed": false,
+        "date": "Fri Sep 29 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326afe",
+        "title": "Garbage day",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "completed": false,
+        "date": "Mon Oct 02 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b00",
+        "title": "Return books",
+        "tasks": [
+            "all of them"
+        ],
+        "completed": false,
+        "date": "Mon Oct 02 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b02",
+        "title": "Pay bills",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "completed": false,
+        "date": "Mon Oct 02 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b04",
+        "title": "Car checkup",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "completed": false,
+        "date": "Tue Oct 03 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b06",
+        "title": "Dough prep",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "completed": false,
+        "date": "Tue Oct 03 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b08",
+        "title": "Recyclables day",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "completed": false,
+        "date": "Wed Oct 04 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b0a",
+        "title": "Coffee Event",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "completed": false,
+        "date": "Thu Oct 05 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b0c",
+        "title": "Groceries",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "completed": false,
+        "date": "Thu Oct 05 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b0e",
+        "title": "Dinner @Calvin's",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "completed": false,
+        "date": "Fri Oct 06 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b10",
+        "title": "Trip plan",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "completed": false,
+        "date": "Fri Oct 06 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b12",
+        "title": "Garbage day",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "completed": false,
+        "date": "Mon Oct 09 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b14",
+        "title": "Return books",
+        "tasks": [
+            "all of them"
+        ],
+        "completed": false,
+        "date": "Mon Oct 09 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b16",
+        "title": "Pay bills",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "completed": false,
+        "date": "Mon Oct 09 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b18",
+        "title": "Car checkup",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "completed": false,
+        "date": "Tue Oct 10 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b1a",
+        "title": "Dough prep",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "completed": false,
+        "date": "Tue Oct 10 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b1c",
+        "title": "Recyclables day",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "completed": false,
+        "date": "Wed Oct 11 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b1e",
+        "title": "Coffee Event",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "completed": false,
+        "date": "Thu Oct 12 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b20",
+        "title": "Groceries",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "completed": false,
+        "date": "Thu Oct 12 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b22",
+        "title": "Dinner @Calvin's",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "completed": false,
+        "date": "Fri Oct 13 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b24",
+        "title": "Trip plan",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "completed": false,
+        "date": "Fri Oct 13 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b26",
+        "title": "Garbage day",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "completed": false,
+        "date": "Mon Oct 16 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b28",
+        "title": "Return books",
+        "tasks": [
+            "all of them"
+        ],
+        "completed": false,
+        "date": "Mon Oct 16 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b2a",
+        "title": "Pay bills",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "completed": false,
+        "date": "Mon Oct 16 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b2c",
+        "title": "Car checkup",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "completed": false,
+        "date": "Tue Oct 17 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b2e",
+        "title": "Dough prep",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "completed": false,
+        "date": "Tue Oct 17 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b30",
+        "title": "Recyclables day",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "completed": false,
+        "date": "Wed Oct 18 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b32",
+        "title": "Coffee Event",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "completed": false,
+        "date": "Thu Oct 19 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b34",
+        "title": "Groceries",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "completed": false,
+        "date": "Thu Oct 19 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b36",
+        "title": "Dinner @Calvin's",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "completed": false,
+        "date": "Fri Oct 20 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b38",
+        "title": "Trip plan",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "completed": false,
+        "date": "Fri Oct 20 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b3a",
+        "title": "Garbage day",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "completed": false,
+        "date": "Mon Oct 23 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b3c",
+        "title": "Return books",
+        "tasks": [
+            "all of them"
+        ],
+        "completed": false,
+        "date": "Mon Oct 23 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b3e",
+        "title": "Pay bills",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "completed": false,
+        "date": "Mon Oct 23 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b40",
+        "title": "Car checkup",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "completed": false,
+        "date": "Tue Oct 24 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b42",
+        "title": "Dough prep",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "completed": false,
+        "date": "Tue Oct 24 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b44",
+        "title": "Recyclables day",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "completed": false,
+        "date": "Wed Oct 25 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b46",
+        "title": "Coffee Event",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "completed": false,
+        "date": "Thu Oct 26 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b48",
+        "title": "Groceries",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "completed": false,
+        "date": "Thu Oct 26 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b4a",
+        "title": "Dinner @Calvin's",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "completed": false,
+        "date": "Fri Oct 27 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b4c",
+        "title": "Trip plan",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "completed": false,
+        "date": "Fri Oct 27 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b4e",
+        "title": "Garbage day",
+        "tasks": [
+            "trash",
+            "organics"
+        ],
+        "completed": false,
+        "date": "Mon Oct 30 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b50",
+        "title": "Return books",
+        "tasks": [
+            "all of them"
+        ],
+        "completed": false,
+        "date": "Mon Oct 30 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b52",
+        "title": "Pay bills",
+        "tasks": [
+            "credit card",
+            "gas bill",
+            "electricity bill"
+        ],
+        "completed": false,
+        "date": "Mon Oct 30 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b54",
+        "title": "Car checkup",
+        "tasks": [
+            "4pm @ DJ's",
+            "bring cash"
+        ],
+        "completed": false,
+        "date": "Tue Oct 31 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b56",
+        "title": "Dough prep",
+        "tasks": [
+            "2 loaves for Fri",
+            "whole wheat, plain",
+            "AP white, cashews"
+        ],
+        "completed": false,
+        "date": "Tue Oct 31 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b58",
+        "title": "Recyclables day",
+        "tasks": [
+            "cardboard",
+            "bottles",
+            "plastics"
+        ],
+        "completed": false,
+        "date": "Wed Nov 01 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b5a",
+        "title": "Coffee Event",
+        "tasks": [
+            "event on Main",
+            "JJ, free capp",
+            "Prado, bean samples",
+            "Pallet, cupping"
+        ],
+        "completed": false,
+        "date": "Thu Nov 02 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b5c",
+        "title": "Groceries",
+        "tasks": [
+            "curry week",
+            "tomato",
+            "sweet potato",
+            "snow peas",
+            "galangal",
+            "check spices"
+        ],
+        "completed": false,
+        "date": "Thu Nov 02 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b5e",
+        "title": "Dinner @Calvin's",
+        "tasks": [
+            "dough for bake",
+            "boardgames",
+            "coffee samples"
+        ],
+        "completed": false,
+        "date": "Fri Nov 03 2023",
+        "color": "blank"
+    },
+    {
+        "id": "650923396d4e4712df326b60",
+        "title": "Trip plan",
+        "tasks": [
+            "budgeting",
+            "coffee spots",
+            "ice cream",
+            "day trip ideas"
+        ],
+        "completed": false,
+        "date": "Fri Nov 03 2023",
+        "color": "blank"
+    }
+]

@@ -67,7 +67,7 @@ const LegendButton: React.FunctionComponent<LegendButtonProps> = (props: LegendB
 
 const getLabelIcon = (color: LegendButtonProps['color']) => {
     const styledClassName: string = `Todo__legend__button__indicator ${color}`;
-    const solidCircle = (
+    const circleSolid = (
         <svg className={ styledClassName }
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2z">
@@ -75,7 +75,7 @@ const getLabelIcon = (color: LegendButtonProps['color']) => {
         </svg>
     );
 
-    const hollowCircle = (
+    const circleHollow = (
         <svg className={ styledClassName }
             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M12 2C6.486 2 2 6.486 2 12c.001 5.515 4.487 10.001 10 10.001 5.514 0 10-4.486 10.001-10.001 0-5.514-4.486-10-10.001-10zm0 18.001c-4.41 0-7.999-3.589-8-8.001 0-4.411 3.589-8 8-8 4.412 0 8.001 3.589 8.001 8-.001 4.412-3.59 8.001-8.001 8.001z">
@@ -89,19 +89,41 @@ const getLabelIcon = (color: LegendButtonProps['color']) => {
             <path d="M4 11h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zM4 21h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1zm10 0h6a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1z">
             </path>
         </svg>
-    )
+    );
 
-    let labelSvg = solidCircle;
+    const boxSolid = (
+        <svg className={ styledClassName }
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M7 19h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z">
+            </path>
+        </svg>
+    );
+
+    const boxHollow = (
+        <svg className={ styledClassName }
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M7 5c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2H7zm0 12V7h10l.002 10H7z">
+                </path>
+        </svg>
+    );
+
+    let labelSvg = circleSolid;
     // Assign different svg depending on 'color'.
     switch (color) {
         case 'all': 
             labelSvg = grid;
             break;
+        case 'solid':
+            labelSvg = boxSolid;
+            break;
         case 'transparent':
-            labelSvg = hollowCircle;
+            labelSvg = circleHollow;
+            break;
+        case 'blank':
+            labelSvg = boxHollow;
             break;
         default:
-            labelSvg = solidCircle;
+            labelSvg = circleSolid;
     }
 
     return labelSvg;
@@ -109,7 +131,7 @@ const getLabelIcon = (color: LegendButtonProps['color']) => {
 
 export interface LegendButtonProps {
     'color': TodoProps['showOnly'],
-    'label': 'All' | 'ASAP' | 'Today' | 'Tomorrow' | '2~3 days' | '4 days' | '5+ days'
+    'label': 'For the week' | 'ASAP' | 'Today' | 'Tomorrow' | '2~3 days' | '4 days' | '5+ days'
 };
 
 export default LegendButton;

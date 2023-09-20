@@ -5,11 +5,13 @@ import {
     ThunkAction, 
     Action } from '@reduxjs/toolkit';
 import todoReducer from '../features/Todo/todoSlice';
+import editorReducer from '../features/Editor/editorSlice';
 
 
 // Create the root reducer independently to obtain the RootState type.
 const rootReducer = combineReducers({
-    todo: todoReducer
+    todo: todoReducer,
+    editor: editorReducer
 });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
@@ -21,7 +23,8 @@ export function setupStore(preloadedState?: PreloadedState<RootState>) {
 
 export const store = configureStore({
     reducer: {
-        todo: todoReducer
+        todo: todoReducer,
+        editor: editorReducer
     }
 });
 

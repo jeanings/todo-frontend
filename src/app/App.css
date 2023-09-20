@@ -1,9 +1,29 @@
 .App {
+    height: 100%;
     display: grid;
-    grid-template-columns: 90% 10%;
-    grid-template-rows: 100%;
-    min-width: 100%;
-    min-height: 100%;
+    grid-template-columns: 9fr 1fr;
+    grid-template-rows: 60% 40%;
+    column-gap: 2rem;
+    row-gap: 2rem;
     justify-items: center;
+    align-items: center;
     font-family: 'Barlow', sans-serif;
 }
+
+    .App__overlay {
+        width: 100%;
+        height: 100%;
+        grid-column: 1 / -1;
+        grid-row: 1 / -1;
+        background: #000000;
+        opacity: 0;
+        z-index: 3;
+        pointer-events: none;
+        user-select: none;
+        transition: 400ms all;
+    }
+
+        .App__overlay.on {
+            opacity: 0.95;
+            transition: 400ms all;
+        }

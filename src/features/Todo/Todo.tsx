@@ -17,6 +17,7 @@ const Todo: React.FunctionComponent = () => {
     const todoState = useAppSelector(state => state.todo);
     const todos = todoState.todos;
     const showOnly: TodoProps['showOnly'] = todoState.showOnly;
+
     
     // Fetch todos on init render.
     useEffect(() => {
@@ -24,7 +25,6 @@ const Todo: React.FunctionComponent = () => {
             dispatch(getTodos({}));
         }
     }, []);
-
 
     // Build list of TodoTask elements.
     let todoTaskElems: React.ReactElement<TodoTaskProps>[] = [];
@@ -43,7 +43,7 @@ const Todo: React.FunctionComponent = () => {
                 role="heading"
                 aria-label="todo greeter">
                 {/* Dynamically change greeting based on selected 'color' */}
-                { "ToDos" + " " + getGreeting(showOnly) }
+                { `ToDos ${getGreeting(showOnly)}` }
             </h1>
         
             {/* Render list of todo item components */}
@@ -60,32 +60,36 @@ const Todo: React.FunctionComponent = () => {
 
 
 export const getGreeting = (showOnly: TodoProps['showOnly']): string => {
-    /* ------------------------------------------------------
-        Helper to dynamically change heading text
-        based on <todo.showOnly> state.
-    ------------------------------------------------------ */
+/* ------------------------------------------------------
+    Helper to dynamically change heading text
+    based on <todo.showOnly> state.
+------------------------------------------------------ */
     const greetingsForColors = {
-        'all': 'within 5 days',
+        'all': 'for the week, rolling',
         'solid': 'as soon as possible',
         'red': 'for today',
         'amber': 'for tomorrow',
         'green': 'in 2~3 days',
         'transparent': 'in 4 days',
-        'blank': '5+ days'
+        'blank': 'further out, 5+ days'
     };
 
     return greetingsForColors[showOnly];
 };
 
 
-
 const findTodosOfColor = (todosOfColor: TodoType[], targetColor: TodoProps['showOnly']): TodoType[] => {
+/* -----------------------------------------------------------
+    Helper to filter for todos based on the current selected
+    <showOnly> state.
+----------------------------------------------------------- */
     let foundTodosOfColor: TodoType[] = [];
     
     if (targetColor === 'all') {
         foundTodosOfColor = todosOfColor.filter((todo: TodoType) => {
             let result: boolean = false;
             switch (todo.color) {
+                // Skip 'grey' and 'blank' for show 'all' (current week only) selection.
                 case 'grey':
                     break;
                 case 'blank':
@@ -106,16 +110,15 @@ const findTodosOfColor = (todosOfColor: TodoType[], targetColor: TodoProps['show
 };
 
 
-
 const buildTodoTasks = (todosOfColor: TodoType[]): React.ReactElement<TodoTaskProps>[] => {
-    /* ------------------------------------------------------
-        Helper to build TodoTask components for every todo in
-        each 'color' lists in <todo>.
-    ------------------------------------------------------ */
+/* --------------------------------------------------------
+    Helper to build TodoTask components for every todo in
+    each 'color' lists in <todo>.
+-------------------------------------------------------- */
     // Build TodoTasks.
     let todoTasks: React.ReactElement<TodoTaskProps>[]= [];
     todoTasks = todosOfColor.map((coloredTodo: TodoType) => {
-        const baseClassName: string = "Todo__tasks-" + coloredTodo.color;
+        const baseClassName: string = "Todo__tasks";
         
         const todoTask: React.ReactElement<TodoTaskProps> = (
             <TodoTask 
