@@ -6,7 +6,8 @@ import {
     cleanup,
     render,
     screen, 
-    waitFor } from '@testing-library/react';
+    waitFor, 
+    within } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import Todo, { getGreeting } from '../Todo/Todo';
@@ -82,6 +83,49 @@ test('renders color-coded todos', async() => {
         const colorContainer = screen.queryAllByRole('listitem', { name: `todo container for ${color} coded tasks`});
         expect(colorContainer.length).not.toEqual(0);
     }
+});
+
+test('renders edit, delete buttons in todos', async() => {
+    const { freshStore }= renderHelper({ todo: true, legend: false, creator: false, editor: false });
+    // Verify initial fetch.
+    expect(screen.getByRole('main', { name: 'todo tasks container' })).toBeInTheDocument();
+    await waitFor(() => expect(freshStore.getState().todo.todos).not.toEqual(null));
+    await waitFor(() => expect(freshStore.getState().todo.status).toEqual('successful'));
+
+    // Check existence of a todo.
+    let targetColor = 'red';
+    const colorContainer = screen.queryAllByRole('listitem', { name: `todo container for ${targetColor} coded tasks`})[0];
+    expect(colorContainer).toBeInTheDocument();
+
+    const editButtons = screen.queryAllByRole('button', { name: 'button to edit for tasks' });
+    const deleteButtons = screen.queryAllByRole('button', { name: 'button to delete for tasks' });
+    expect(editButtons.length).not.toEqual(0);
+    expect(deleteButtons.length).not.toEqual(0);
+});
+
+test('delete button clicks will call DELETE method and remove todo', async() => {
+    const { freshStore }= renderHelper({ todo: true, legend: false, creator: false, editor: false });
+    // Verify initial fetch.
+    expect(screen.getByRole('main', { name: 'todo tasks container' })).toBeInTheDocument();
+    await waitFor(() => expect(freshStore.getState().todo.todos).not.toEqual(null));
+    await waitFor(() => expect(freshStore.getState().todo.status).toEqual('successful'));
+
+    // Get a todo to delete.
+    let targetColor = 'solid';
+    const todoToDelete = screen.queryAllByRole('listitem', { name: `todo container for ${targetColor} coded tasks`})[0];
+    expect(todoToDelete).toBeInTheDocument();
+
+    // Verify todo marked for deletion is in state.
+    const todoInState = freshStore.getState().todo.todos?.filter(todo => todo.id === todoToDelete.id)[0];
+    expect(todoInState?.id).toEqual(todoToDelete.id);
+    
+    // Delete todo.
+    const deleteButton = within(todoToDelete).getByRole('button', { name: 'button to delete for tasks' });
+    await user.click(deleteButton);
+
+    // Verify todo no longer in state.
+    const deletedTodo = freshStore.getState().todo.todos?.filter(todo => todo.id === todoToDelete.id);
+    expect(deletedTodo?.length).toEqual(0);
 });
 
 
