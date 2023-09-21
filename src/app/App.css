@@ -26,4 +26,6 @@
         .App__overlay.on {
             opacity: 0.95;
             transition: 400ms all;
+            pointer-events: all;
+            cursor: no-drop;
         }
