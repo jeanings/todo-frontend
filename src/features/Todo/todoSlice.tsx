@@ -145,8 +145,8 @@ const todosSlice = createSlice({
             --------------------------- */
             .addCase(createTodo.fulfilled, (state, action) => {
                 const data = action.payload;
-                // Update state with updated list of sorted todos.  
-                state.todos = data;
+                // Update state with updated list of sorted todos.
+                state.todos = removeWeekends(data);
             })
             /* ---------------------------
                 Read (GET) reducer.
@@ -154,7 +154,7 @@ const todosSlice = createSlice({
             .addCase(getTodos.fulfilled, (state, action) => {
                 // Save fetched todos into state.
                 const data = action.payload;
-                state.todos = data;
+                state.todos = removeWeekends(data);
                 // Update statuses.
                 state.status = 'successful';
                 state.showOnly = 'all';
@@ -165,7 +165,7 @@ const todosSlice = createSlice({
             .addCase(updateTodo.fulfilled, (state, action) => {
                 const data = action.payload;
                 // Update state with updated list of sorted todos.  
-                state.todos = data;
+                state.todos = removeWeekends(data);
             })
             /* ---------------------------
                 Delete (DELETE) reducer.
@@ -187,6 +187,21 @@ const todosSlice = createSlice({
       }
 });
 
+
+const removeWeekends = (todos: TodoType[]): TodoType[] => {
+    let todosForWeekdays: TodoType[] = todos.filter((todo: TodoType) => {
+        if (!todo.date) {
+            return true;
+        }
+        
+        const dateString = todo.date as string;
+        const weekends = ['Sat', 'Sun'];
+        const isWeekend = weekends.includes(dateString.slice(0, 3));
+        return !isWeekend;
+    });
+    return todosForWeekdays;
+};
+
 export interface TodoProps {
     [index: string]: string | null | TodoType[]
     status: 'uninitialized' | 'successful' | 'error',
@@ -197,7 +212,7 @@ export interface TodoProps {
 export interface TodoType {
     id: string,
     title: string,
-    date: Date,
+    date: Date | string,
     tasks: string[],
     color?: 'all' | 'grey' | 'solid' | 'red' | 'amber' | 'green' | 'transparent' | 'blank',
     completed: boolean
