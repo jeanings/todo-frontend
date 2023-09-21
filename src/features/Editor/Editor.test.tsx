@@ -91,16 +91,16 @@ describe('Editor form submission', () => {
         const inputTasks = screen.getByRole('textbox', { name: 'Tasks' });
 
         // Enter accepted values (dated).
-        await userEvent.type(inputTitle, "Write tests for create");
+        await user.type(inputTitle, "Write tests for create");
         expect(inputTitle).toHaveValue("Write tests for create");
-        await userEvent.type(inputDate, "2023/09/20");
+        await user.type(inputDate, "2023/09/20");
         expect(inputDate).toHaveValue("2023/09/20");
-        await userEvent.type(inputTasks, "It has to be done");
+        await user.type(inputTasks, "It has to be done");
         expect(inputTasks).toHaveValue("It has to be done");
 
         // Verify "new" todo doesn't exist in state.
         const submitButton = screen.getByRole('button', { name: 'editor submit button' });
-        await waitFor(() => userEvent.click(submitButton));
+        await waitFor(() => user.click(submitButton));
    
         // Verify updated todos.
         const findDatedTodo = freshStore.getState().todo.todos?.filter(todo => todo.id === "testDatedId");
@@ -127,11 +127,11 @@ describe('Editor form submission', () => {
         const inputTasks = screen.getByRole('textbox', { name: 'Tasks' });
 
         // Enter accepted values (dated).
-        await userEvent.type(inputTitle, "Writing tests for update");
+        await user.type(inputTitle, "Writing tests for update");
         expect(inputTitle).toHaveValue("Writing tests for update");
-        await userEvent.type(inputDate, "2023/09/20");
+        await user.type(inputDate, "2023/09/20");
         expect(inputDate).toHaveValue("2023/09/20");
-        await userEvent.type(inputTasks, "This will be updated");
+        await user.type(inputTasks, "This will be updated");
         expect(inputTasks).toHaveValue("This will be updated");
 
         // Check original todo props.
@@ -140,7 +140,7 @@ describe('Editor form submission', () => {
 
         // Verify "new" todo doesn't exist in state.
         const submitButton = screen.getByRole('button', { name: 'editor submit button' });
-        await waitFor(() => userEvent.click(submitButton));
+        await waitFor(() => user.click(submitButton));
    
         // Verify updated todos.
         const findTodoAfter = freshStore.getState().todo.todos?.filter(todo => todo.id === '650923396d4e4712df326abe')[0];
@@ -167,16 +167,16 @@ describe('Editor form submission', () => {
         const inputTasks = screen.getByRole('textbox', { name: 'Tasks' });
 
         // Enter accepted values (dated).
-        await userEvent.type(inputTitle, "Write tests for create");
+        await user.type(inputTitle, "Write tests for create");
         expect(inputTitle).toHaveValue("Write tests for create");
-        await userEvent.type(inputDate, "10/31/2023");
+        await user.type(inputDate, "10/31/2023");
         expect(inputDate).toHaveValue("10/31/2023");
-        await userEvent.type(inputTasks, "This is gonna fail");
+        await user.type(inputTasks, "This is gonna fail");
         expect(inputTasks).toHaveValue("This is gonna fail");
 
         // Verify "new" todo doesn't exist in state.
         const submitButton = screen.getByRole('button', { name: 'editor submit button' });
-        await waitFor(() => userEvent.click(submitButton));
+        await waitFor(() => user.click(submitButton));
    
         // Verify unchanged todos.
         const findDatedTodo = freshStore.getState().todo.todos?.filter(todo => todo.id === "testDatedId");
