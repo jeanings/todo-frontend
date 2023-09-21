@@ -1,5 +1,4 @@
 import React from 'react';
-import { useAppSelector } from '../../app/hooks';
 import { TodoProps } from '../Todo/todoSlice';
 import LegendButton, { LegendButtonProps } from './LegendButton';
 import './LegendSelector.css';
@@ -10,8 +9,6 @@ import './LegendSelector.css';
     Uses <todo.showOnly> state. 
 =============================================================== */
 const LegendSelector: React.FunctionComponent = () => {
-    const showOnly: TodoProps['showOnly'] = useAppSelector(state => state.todo.showOnly);
-
     const colors: LegendButtonProps['color'][] = [
         'all', 'solid', 'red', 'amber', 'green', 'transparent', 'blank'
     ];

@@ -52,7 +52,7 @@ const LegendButton: React.FunctionComponent<LegendButtonProps> = (props: LegendB
     return (
         <button className={`Todo__legend__button ${props.color} ${legendButtonHovered ? "hovered" : ""} ${legendButtonSelected ? "selected" : ""}`}
             id={ `selector__${props.color}`}
-            aria-label="todo selector button"
+            aria-label={ `todo selector for ${props.color}` }
             onMouseEnter={ onLegendButtonHover }
             onMouseLeave={ onLegendButtonHover }
             onClick={ onLegendButtonClick }>
