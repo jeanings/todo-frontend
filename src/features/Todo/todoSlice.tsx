@@ -132,33 +132,6 @@ const todosSlice = createSlice({
     name: 'todo',
     initialState,
     reducers: {
-        // Set todo state for mocked fetches.
-        setTodos: (state, action) => {
-            // Helper function to filter for targeted todo 'color'.
-            const getTodoColors = (data: TodoType[], color: TodoType['color']): TodoType[] | null => {
-                const todosOfColor: TodoType[] = data.filter((todo: TodoType) => {
-                    return (todo.color === color);
-                });
-
-                if (todosOfColor.length > 0) {
-                    return todosOfColor;
-                }
-                else {
-                    return null;
-                }
-            };
-
-            // Set 'color' states.
-            const data: TodoType[] = action.payload;
-            state.solid = getTodoColors(data, 'solid');
-            state.red = getTodoColors(data, 'red');
-            state.amber = getTodoColors(data, 'amber');
-            state.green = getTodoColors(data, 'green');
-            state.transparent = getTodoColors(data, 'transparent');
-            // Update statuses.
-            state.status = 'successful';
-            state.showOnly = 'all';
-        },
         // Handles filtering of todos to show by 'color'.
         handleColorSelect: (state, action) => {
             const onlyShowFor: TodoProps['showOnly'] = action.payload;
@@ -235,5 +208,5 @@ export const todoState = (state: RootState) => state.todo;
 
 // Export actions, reducers.
 const { actions, reducer } = todosSlice;
-export const { setTodos, handleColorSelect } = actions;
+export const { handleColorSelect } = actions;
 export default reducer;
