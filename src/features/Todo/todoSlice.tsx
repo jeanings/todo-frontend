@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk, isRejectedWithValue } from '@reduxjs/too
 import axios, { AxiosResponse } from 'axios';
 import { RootState } from '../../app/store';
 import { todoApiUri } from '../../app/App';
+import { EditorInputProps } from '../Editor/Editor';
 
 
 /* ================================================
@@ -39,7 +40,7 @@ export const requestToApi = (todoApiUri: string, endpoint: string, request: any,
 ---------------------------------- */
 export const createTodo = createAsyncThunk(
     'todo/createTodo',
-    async(request: any, { rejectWithValue }) => {
+    async(request: EditorInputProps, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, 'create', request, 'post');
             if (response.status === 201) {  // 'Created'
@@ -59,7 +60,7 @@ export const createTodo = createAsyncThunk(
 
 export const getTodos = createAsyncThunk(
     'todo/getTodos',
-    async(request: any, { rejectWithValue }) => {
+    async(request: {}, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, 'getAll', request, 'get');
             if (response.status === 200) {  // 'OK'
@@ -79,7 +80,7 @@ export const getTodos = createAsyncThunk(
 
 export const updateTodo = createAsyncThunk(
     'todo/updateTodo',
-    async(request: any, { rejectWithValue }) => {
+    async(request: EditorInputProps, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, 'update', request, 'patch');
             if (response.status === 200) {  // 'OK'
@@ -99,7 +100,7 @@ export const updateTodo = createAsyncThunk(
 
 export const deleteTodo = createAsyncThunk(
     'todo/deleteTodo',
-    async(request: any, { rejectWithValue }) => {
+    async(request: { id: TodoType['id'] }, { rejectWithValue }) => {
         try {
             const response: AxiosResponse = await requestToApi(todoApiUri, 'delete', request, 'delete');
             if (response.status === 200) {  // 'OK'

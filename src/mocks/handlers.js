@@ -21,8 +21,11 @@ const createUpdatePayload = {
 }
 
 const newTodosWithCreated = [...defaultTodos, createDatedPayload];
+// Remove old todo and replace with 'updated' version.
 const newTodosWithPatched = defaultTodos.filter((todo) => todo.id !== '650923396d4e4712df326abe');
 newTodosWithPatched.push(createUpdatePayload);
+// Delete todo.
+const deletedTodo = createUpdatePayload;    // same id for deletion one.
 
 
 export const handlers = [
@@ -44,10 +47,10 @@ export const handlers = [
             ctx.json(newTodosWithPatched)
         );
     }),
-    rest.delete(`${todoApiUri}delete`, (req, res, ctx) => {
+    rest.delete(`${todoApiUri}delete/650923396d4e4712df326abe`, (req, res, ctx) => {
         return res(
             ctx.status(200),
-            ctx.json(defaultTodos)
+            ctx.json(deletedTodo)
         );
     })
 ]
