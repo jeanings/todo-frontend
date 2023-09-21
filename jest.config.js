@@ -16,7 +16,7 @@ module.exports = {
   },
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.js$": "$1",
-    "\\.(css|sass)$": "identity-obj-proxy",
+    "\\.(css|sass)$": "identity-obj-proxy"
   },
   resetMocks: true,
   setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"]
