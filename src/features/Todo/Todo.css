@@ -1,5 +1,5 @@
 .Todo {
-    width: 95%;
+    width: 100%;
     min-height: 100%;
     display: grid;
     grid-template-rows: 8rem auto;
