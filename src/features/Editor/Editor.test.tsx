@@ -185,11 +185,9 @@ describe('Editor form submission', () => {
 });
 
 
-
 type RendererType = {
     todo: boolean,
     legend: boolean,
     creator: boolean,
     editor: boolean
 };
-type CrudType = 'create' | 'getAll' | 'update' | 'delete';
