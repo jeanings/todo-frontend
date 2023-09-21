@@ -7,4 +7,5 @@
     align-self: flex-end;
     justify-content: center;
     row-gap: 0.5rem;
+    padding-right: 2rem;
 }

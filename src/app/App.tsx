@@ -14,9 +14,9 @@ function App() {
     const editing = useAppSelector(state => state.editor.editing);
 
     return (
-        <div className="App">
+        <div className={ `App` }>
             {/* Dimming overlay when Editor is shown. */}
-            <div className={ `App__overlay${editing ? " on" : " off"}` }
+            <div className={ `App__overlay ${editing ? "on" : ""}` }
                 role="figure"
                 aria-label="overlay for main app">
             </div>
