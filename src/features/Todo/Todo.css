@@ -1,0 +1,63 @@
+.Todo {
+    width: 95%;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 8rem auto;
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    row-gap: 2rem;
+    transition: 300ms all;
+}
+
+    .Todo__greet {
+        grid-row: 1 / 2;
+        align-self: center;
+        font-size: 3rem;
+        text-align: center;
+    }
+
+    .Todo__tasks {
+        grid-row: 2 / -1;
+        display: flex;
+        flex-grow: 1;
+        flex-wrap: wrap;
+        column-gap: 2rem;
+        row-gap: 2rem;
+        padding: 2rem;
+        max-height: 75vh;
+        height: 75vh;
+        justify-content: center;
+        overflow-y: scroll;
+    }
+
+    .Todo__tasks::-webkit-scrollbar {
+        width: 0.85rem;
+        height: 0.85rem;
+    }
+        /* Scroll track above thumb */
+        .Todo__tasks::-webkit-scrollbar-track-piece {
+            background-color: #ffffff00;
+        }
+        /* Scroll track below thumb */
+        .Todo__tasks::-webkit-scrollbar-track {
+            background-color: #ffffff00;
+            /* Shrink "pong" bar */
+            margin-top: 6rem;
+            margin-bottom: 6rem;
+        }
+        /* Scroll "pong" bar */
+        .Todo__tasks::-webkit-scrollbar-thumb {
+            background-color: #ffffff00;
+            border: 1px solid var(--color-solid);
+            border-radius: 0.325rem;
+        }
+
+
+        .Todo__tasks::-webkit-scrollbar-thumb:hover {
+            background-color: var(--color-solid); 
+        }
+            /* Invert colors for 'solid' tasks */
+            .Todo__tasks-solid::-webkit-scrollbar-thumb:hover {
+                background-color: var(--color-transparent); 
+            }
+    

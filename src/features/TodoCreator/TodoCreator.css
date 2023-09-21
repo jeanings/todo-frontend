@@ -1,0 +1,22 @@
+.Todo__create {
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+    display: flex;
+    align-self: flex-start;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+    .Todo__create svg {
+        width: 4rem;
+        height: 4rem;
+        border: 1px solid transparent;
+        border-radius: 5px;
+    }
+
+    .Todo__create:hover svg {
+        background: hsla(0, 0%, 65%, 0.5);
+        transition: 300ms all;
+        pointer-events: none;
+    }
